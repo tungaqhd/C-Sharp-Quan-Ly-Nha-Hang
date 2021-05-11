@@ -1,0 +1,334 @@
+﻿
+namespace BTL_Quan_Ly_Nha_Hang
+{
+    partial class QuanLySanPham
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbxMa = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbxTen = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbxMoTa = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbxSoLuong = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbxDonGia = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnCapNhat = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.sanPhamBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLNhaHangDataSet = new BTL_Quan_Ly_Nha_Hang.QLNhaHangDataSet();
+            this.sanPhamTableAdapter = new BTL_Quan_Ly_Nha_Hang.QLNhaHangDataSetTableAdapters.SanPhamTableAdapter();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.dtgvSanPham = new System.Windows.Forms.DataGridView();
+            this.cbxLoai = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLNhaHangDataSet)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvSanPham)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(507, 62);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(322, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Danh sách các sản phẩm";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 62);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Mã sản phẩm:";
+            // 
+            // tbxMa
+            // 
+            this.tbxMa.Location = new System.Drawing.Point(143, 62);
+            this.tbxMa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxMa.Name = "tbxMa";
+            this.tbxMa.Size = new System.Drawing.Size(224, 23);
+            this.tbxMa.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 107);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(116, 17);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Tên sản phẩm:";
+            // 
+            // tbxTen
+            // 
+            this.tbxTen.Location = new System.Drawing.Point(143, 107);
+            this.tbxTen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxTen.Name = "tbxTen";
+            this.tbxTen.Size = new System.Drawing.Size(224, 23);
+            this.tbxTen.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 159);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Mô tả:";
+            // 
+            // tbxMoTa
+            // 
+            this.tbxMoTa.Location = new System.Drawing.Point(143, 159);
+            this.tbxMoTa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxMoTa.Multiline = true;
+            this.tbxMoTa.Name = "tbxMoTa";
+            this.tbxMoTa.Size = new System.Drawing.Size(224, 95);
+            this.tbxMoTa.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 278);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 17);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Số lượng:";
+            // 
+            // tbxSoLuong
+            // 
+            this.tbxSoLuong.Location = new System.Drawing.Point(143, 278);
+            this.tbxSoLuong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxSoLuong.Name = "tbxSoLuong";
+            this.tbxSoLuong.Size = new System.Drawing.Size(224, 23);
+            this.tbxSoLuong.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 334);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 17);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Đơn giá:";
+            // 
+            // tbxDonGia
+            // 
+            this.tbxDonGia.Location = new System.Drawing.Point(143, 334);
+            this.tbxDonGia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxDonGia.Name = "tbxDonGia";
+            this.tbxDonGia.Size = new System.Drawing.Size(224, 23);
+            this.tbxDonGia.TabIndex = 5;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(12, 384);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 17);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Loại:";
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(16, 486);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(100, 28);
+            this.btnThem.TabIndex = 8;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // btnCapNhat
+            // 
+            this.btnCapNhat.Location = new System.Drawing.Point(124, 486);
+            this.btnCapNhat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(100, 28);
+            this.btnCapNhat.TabIndex = 9;
+            this.btnCapNhat.Text = "Cập nhật";
+            this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(232, 486);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(100, 28);
+            this.btnXoa.TabIndex = 10;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // sanPhamBindingSource
+            // 
+            this.sanPhamBindingSource.DataMember = "SanPham";
+            this.sanPhamBindingSource.DataSource = this.qLNhaHangDataSet;
+            // 
+            // qLNhaHangDataSet
+            // 
+            this.qLNhaHangDataSet.DataSetName = "QLNhaHangDataSet";
+            this.qLNhaHangDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sanPhamTableAdapter
+            // 
+            this.sanPhamTableAdapter.ClearBeforeFill = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cbxLoai);
+            this.groupBox1.Controls.Add(this.tbxMa);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnReset);
+            this.groupBox1.Controls.Add(this.btnXoa);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.btnCapNhat);
+            this.groupBox1.Controls.Add(this.tbxTen);
+            this.groupBox1.Controls.Add(this.btnThem);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.tbxMoTa);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.tbxDonGia);
+            this.groupBox1.Controls.Add(this.tbxSoLuong);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(16, 62);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(460, 551);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin chi tiết";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(340, 486);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(100, 28);
+            this.btnReset.TabIndex = 11;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // dtgvSanPham
+            // 
+            this.dtgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvSanPham.Location = new System.Drawing.Point(513, 96);
+            this.dtgvSanPham.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgvSanPham.Name = "dtgvSanPham";
+            this.dtgvSanPham.RowHeadersWidth = 51;
+            this.dtgvSanPham.Size = new System.Drawing.Size(1047, 517);
+            this.dtgvSanPham.TabIndex = 11;
+            this.dtgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPham_CellClick);
+            // 
+            // cbxLoai
+            // 
+            this.cbxLoai.FormattingEnabled = true;
+            this.cbxLoai.Items.AddRange(new object[] {
+            "Đồ ăn",
+            "Đồ uống"});
+            this.cbxLoai.Location = new System.Drawing.Point(143, 384);
+            this.cbxLoai.Name = "cbxLoai";
+            this.cbxLoai.Size = new System.Drawing.Size(224, 25);
+            this.cbxLoai.TabIndex = 12;
+            // 
+            // QuanLySanPham
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1576, 801);
+            this.Controls.Add(this.dtgvSanPham);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "QuanLySanPham";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "QuanLySanPham";
+            this.Load += new System.EventHandler(this.QuanLySanPham_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLNhaHangDataSet)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvSanPham)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbxMa;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbxTen;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbxMoTa;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbxSoLuong;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbxDonGia;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnCapNhat;
+        private System.Windows.Forms.Button btnXoa;
+        private QLNhaHangDataSet qLNhaHangDataSet;
+        private System.Windows.Forms.BindingSource sanPhamBindingSource;
+        private QLNhaHangDataSetTableAdapters.SanPhamTableAdapter sanPhamTableAdapter;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dtgvSanPham;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.ComboBox cbxLoai;
+    }
+}
