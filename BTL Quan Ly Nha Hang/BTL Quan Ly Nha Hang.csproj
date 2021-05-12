@@ -173,6 +173,9 @@
     <EmbeddedResource Include="QuanLySanPham.resx">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThemMenuForm.resx">
       <DependentUpon>ThemMenuForm.cs</DependentUpon>
     </EmbeddedResource>
