@@ -40,5 +40,17 @@ namespace BTL_Quan_Ly_Nha_Hang
             QuanLyMenuForm qlmnForm = new QuanLyMenuForm();
             qlmnForm.ShowDialog();
         }
+
+        private void quảnLýNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuanLyThongTinNhanVien quanLyThongTinNhanVien = new QuanLyThongTinNhanVien();
+            quanLyThongTinNhanVien.ShowDialog();
+        }
+
+        private void quảnLýHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Quanlyhoadon quanlyhoadon = new Quanlyhoadon();
+            quanlyhoadon.ShowDialog();
+        }
     }
 }

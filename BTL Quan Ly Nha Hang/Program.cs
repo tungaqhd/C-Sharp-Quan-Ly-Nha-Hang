@@ -18,7 +18,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
             //Application.Run(new QuanLySanPham());
-            Application.Run(new QuanLyPanel());
+            Application.Run(new DangNhap());
         }
     }
 }

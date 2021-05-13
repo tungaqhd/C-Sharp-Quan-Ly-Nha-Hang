@@ -29,7 +29,15 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         void captNhatMenu()
         {
-            List<SanPham> dsSp = db.SanPhams.Where(sp => dsMenu.Contains(sp.ma_sp)).ToList();
+            List<SanPham> dsSp = new List<SanPham>();
+            foreach(int ma in dsMenu)
+            {
+                SanPham rs = db.SanPhams.Where(s => s.ma_sp == ma).FirstOrDefault();
+                if(rs != null)
+                {
+                    dsSp.Add(rs);
+                }
+            }
             dtgvMenu.DataSource = dsSp;
         }
 

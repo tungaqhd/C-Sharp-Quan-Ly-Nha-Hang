@@ -22,7 +22,6 @@ namespace BTL_Quan_Ly_Nha_Hang
     
         public int ma_hd { get; set; }
         public Nullable<int> ma_nv { get; set; }
-        public Nullable<int> ma_kh { get; set; }
         public Nullable<int> ma_ban { get; set; }
         public Nullable<System.DateTime> ngay { get; set; }
         public Nullable<int> trang_thai_hd { get; set; }
@@ -31,7 +30,6 @@ namespace BTL_Quan_Ly_Nha_Hang
         public virtual Ban Ban { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-        public virtual KhachHang KhachHang { get; set; }
         public virtual NhanVien NhanVien { get; set; }
     }
 }

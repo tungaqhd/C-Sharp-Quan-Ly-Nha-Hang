@@ -14,8 +14,9 @@ namespace BTL_Quan_Ly_Nha_Hang
     
     public partial class ChiTietHoaDon
     {
-        public int ma_hd { get; set; }
-        public int ma_sp { get; set; }
+        public int ma_cthd { get; set; }
+        public Nullable<int> ma_hd { get; set; }
+        public Nullable<int> ma_sp { get; set; }
         public Nullable<int> so_luong { get; set; }
     
         public virtual HoaDon HoaDon { get; set; }

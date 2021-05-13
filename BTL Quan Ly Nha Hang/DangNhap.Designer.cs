@@ -61,10 +61,10 @@ namespace BTL_Quan_Ly_Nha_Hang
             // tbxUsername
             // 
             this.tbxUsername.Location = new System.Drawing.Point(386, 114);
-            this.tbxUsername.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tbxUsername.Margin = new System.Windows.Forms.Padding(5);
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(164, 27);
-            this.tbxUsername.TabIndex = 2;
+            this.tbxUsername.TabIndex = 1;
             // 
             // label3
             // 
@@ -79,8 +79,9 @@ namespace BTL_Quan_Ly_Nha_Hang
             // tbxPassword
             // 
             this.tbxPassword.Location = new System.Drawing.Point(386, 172);
-            this.tbxPassword.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tbxPassword.Margin = new System.Windows.Forms.Padding(5);
             this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(164, 27);
             this.tbxPassword.TabIndex = 2;
             // 
@@ -92,6 +93,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // DangNhap
             // 
@@ -105,7 +107,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "DangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";

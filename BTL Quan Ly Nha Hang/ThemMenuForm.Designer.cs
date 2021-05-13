@@ -117,6 +117,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.tbxTen);
             this.Controls.Add(this.label1);
             this.Name = "ThemMenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm Menu";
             this.Load += new System.EventHandler(this.ThemMenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMenu)).EndInit();

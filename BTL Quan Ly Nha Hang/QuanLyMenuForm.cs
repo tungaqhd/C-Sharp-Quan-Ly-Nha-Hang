@@ -40,5 +40,17 @@ namespace BTL_Quan_Ly_Nha_Hang
             themMenuForm.editId = Convert.ToInt32(dtgvMenu.Rows[selected].Cells[0].Value.ToString());
             themMenuForm.ShowDialog();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string name = txtSearch.Text;
+            List<Menu> ds = db.Menus.Where(mn => mn.ten_menu.Contains(name)).ToList();
+            dtgvMenu.DataSource = ds;
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

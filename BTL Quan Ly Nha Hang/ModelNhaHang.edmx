@@ -11,14 +11,15 @@
           </Key>
           <Property Name="ma_ban" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ten_ban" Type="nvarchar" MaxLength="20" />
+          <Property Name="trang_thai" Type="int" />
         </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
-            <PropertyRef Name="ma_hd" />
-            <PropertyRef Name="ma_sp" />
+            <PropertyRef Name="ma_cthd" />
           </Key>
-          <Property Name="ma_hd" Type="int" Nullable="false" />
-          <Property Name="ma_sp" Type="int" Nullable="false" />
+          <Property Name="ma_cthd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ma_hd" Type="int" />
+          <Property Name="ma_sp" Type="int" />
           <Property Name="so_luong" Type="int" />
         </EntityType>
         <EntityType Name="ChiTietMenu">
@@ -42,7 +43,6 @@
           </Key>
           <Property Name="ma_hd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ma_nv" Type="int" />
-          <Property Name="ma_kh" Type="int" />
           <Property Name="ma_ban" Type="int" />
           <Property Name="ngay" Type="date" />
           <Property Name="trang_thai_hd" Type="int" />
@@ -129,7 +129,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_hd">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="0..1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
@@ -141,7 +141,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_sp">
-          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SanPham">
@@ -161,18 +161,6 @@
             </Principal>
             <Dependent Role="HoaDon">
               <PropertyRef Name="ma_ban" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="pk_kh">
-          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KhachHang">
-              <PropertyRef Name="ma_kh" />
-            </Principal>
-            <Dependent Role="HoaDon">
-              <PropertyRef Name="ma_kh" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -220,10 +208,6 @@
             <End Role="Ban" EntitySet="Ban" />
             <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
-          <AssociationSet Name="pk_kh" Association="Self.pk_kh">
-            <End Role="KhachHang" EntitySet="KhachHang" />
-            <End Role="HoaDon" EntitySet="HoaDon" />
-          </AssociationSet>
           <AssociationSet Name="pk_nv" Association="Self.pk_nv">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDon" EntitySet="HoaDon" />
@@ -236,10 +220,12 @@
         <EntityContainer Name="NhaHangEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bans" EntityType="NhaHangModel.Ban" />
           <EntitySet Name="ChiTietHoaDons" EntityType="NhaHangModel.ChiTietHoaDon" />
+          <EntitySet Name="ChiTietMenus" EntityType="NhaHangModel.ChiTietMenu" />
           <EntitySet Name="DanhSaches" EntityType="NhaHangModel.DanhSach" />
           <EntitySet Name="HoaDons" EntityType="NhaHangModel.HoaDon" />
           <EntitySet Name="KhachHangs" EntityType="NhaHangModel.KhachHang" />
           <EntitySet Name="KhuyenMais" EntityType="NhaHangModel.KhuyenMai" />
+          <EntitySet Name="Menus" EntityType="NhaHangModel.Menu" />
           <EntitySet Name="NhanViens" EntityType="NhaHangModel.NhanVien" />
           <EntitySet Name="SanPhams" EntityType="NhaHangModel.SanPham" />
           <EntitySet Name="sysdiagrams" EntityType="NhaHangModel.sysdiagram" />
@@ -255,16 +241,6 @@
             <End Role="SanPham" EntitySet="SanPhams" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
           </AssociationSet>
-          <AssociationSet Name="pk_kh" Association="NhaHangModel.pk_kh">
-            <End Role="KhachHang" EntitySet="KhachHangs" />
-            <End Role="HoaDon" EntitySet="HoaDons" />
-          </AssociationSet>
-          <AssociationSet Name="pk_nv" Association="NhaHangModel.pk_nv">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="HoaDon" EntitySet="HoaDons" />
-          </AssociationSet>
-          <EntitySet Name="ChiTietMenus" EntityType="NhaHangModel.ChiTietMenu" />
-          <EntitySet Name="Menus" EntityType="NhaHangModel.Menu" />
           <AssociationSet Name="ctmn_mn" Association="NhaHangModel.ctmn_mn">
             <End Role="Menu" EntitySet="Menus" />
             <End Role="ChiTietMenu" EntitySet="ChiTietMenus" />
@@ -273,6 +249,10 @@
             <End Role="SanPham" EntitySet="SanPhams" />
             <End Role="ChiTietMenu" EntitySet="ChiTietMenus" />
           </AssociationSet>
+          <AssociationSet Name="pk_nv" Association="NhaHangModel.pk_nv">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Ban">
           <Key>
@@ -280,18 +260,29 @@
           </Key>
           <Property Name="ma_ban" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ten_ban" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="trang_thai" Type="Int32" />
           <NavigationProperty Name="HoaDons" Relationship="NhaHangModel.pk_ban" FromRole="Ban" ToRole="HoaDon" />
         </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
-            <PropertyRef Name="ma_hd" />
-            <PropertyRef Name="ma_sp" />
+            <PropertyRef Name="ma_cthd" />
           </Key>
-          <Property Name="ma_hd" Type="Int32" Nullable="false" />
-          <Property Name="ma_sp" Type="Int32" Nullable="false" />
+          <Property Name="ma_cthd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ma_hd" Type="Int32" />
+          <Property Name="ma_sp" Type="Int32" />
           <Property Name="so_luong" Type="Int32" />
           <NavigationProperty Name="HoaDon" Relationship="NhaHangModel.fk_hd" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
           <NavigationProperty Name="SanPham" Relationship="NhaHangModel.fk_sp" FromRole="ChiTietHoaDon" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="ChiTietMenu">
+          <Key>
+            <PropertyRef Name="ma_ct_mn" />
+          </Key>
+          <Property Name="ma_ct_mn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ma_menu" Type="Int32" />
+          <Property Name="ma_sp" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="NhaHangModel.ctmn_mn" FromRole="ChiTietMenu" ToRole="Menu" />
+          <NavigationProperty Name="SanPham" Relationship="NhaHangModel.ctmn_sp" FromRole="ChiTietMenu" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="DanhSach">
           <Key>
@@ -306,14 +297,12 @@
           </Key>
           <Property Name="ma_hd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ma_nv" Type="Int32" />
-          <Property Name="ma_kh" Type="Int32" />
           <Property Name="ma_ban" Type="Int32" />
           <Property Name="ngay" Type="DateTime" Precision="0" />
           <Property Name="trang_thai_hd" Type="Int32" />
           <Property Name="ma_km" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Ban" Relationship="NhaHangModel.pk_ban" FromRole="HoaDon" ToRole="Ban" />
           <NavigationProperty Name="ChiTietHoaDons" Relationship="NhaHangModel.fk_hd" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
-          <NavigationProperty Name="KhachHang" Relationship="NhaHangModel.pk_kh" FromRole="HoaDon" ToRole="KhachHang" />
           <NavigationProperty Name="NhanVien" Relationship="NhaHangModel.pk_nv" FromRole="HoaDon" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="KhachHang">
@@ -323,7 +312,6 @@
           <Property Name="ma_kh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ten_kh" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="sdt" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="HoaDons" Relationship="NhaHangModel.pk_kh" FromRole="KhachHang" ToRole="HoaDon" />
         </EntityType>
         <EntityType Name="KhuyenMai">
           <Key>
@@ -333,6 +321,14 @@
           <Property Name="ten_km" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="yeu_cau" Type="Int32" />
           <Property Name="tien_giam" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ma_menu" />
+          </Key>
+          <Property Name="ma_menu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten_menu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChiTietMenus" Relationship="NhaHangModel.ctmn_mn" FromRole="Menu" ToRole="ChiTietMenu" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -382,7 +378,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_hd">
-          <End Type="NhaHangModel.HoaDon" Role="HoaDon" Multiplicity="1" />
+          <End Type="NhaHangModel.HoaDon" Role="HoaDon" Multiplicity="0..1" />
           <End Type="NhaHangModel.ChiTietHoaDon" Role="ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
@@ -394,7 +390,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_sp">
-          <End Type="NhaHangModel.SanPham" Role="SanPham" Multiplicity="1" />
+          <End Type="NhaHangModel.SanPham" Role="SanPham" Multiplicity="0..1" />
           <End Type="NhaHangModel.ChiTietHoaDon" Role="ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SanPham">
@@ -405,48 +401,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pk_kh">
-          <End Type="NhaHangModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
-          <End Type="NhaHangModel.HoaDon" Role="HoaDon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KhachHang">
-              <PropertyRef Name="ma_kh" />
-            </Principal>
-            <Dependent Role="HoaDon">
-              <PropertyRef Name="ma_kh" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="pk_nv">
-          <End Type="NhaHangModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
-          <End Type="NhaHangModel.HoaDon" Role="HoaDon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="ma_nv" />
-            </Principal>
-            <Dependent Role="HoaDon">
-              <PropertyRef Name="ma_nv" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="ChiTietMenu">
-          <Key>
-            <PropertyRef Name="ma_ct_mn" />
-          </Key>
-          <Property Name="ma_ct_mn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ma_menu" Type="Int32" />
-          <Property Name="ma_sp" Type="Int32" />
-          <NavigationProperty Name="Menu" Relationship="NhaHangModel.ctmn_mn" FromRole="ChiTietMenu" ToRole="Menu" />
-          <NavigationProperty Name="SanPham" Relationship="NhaHangModel.ctmn_sp" FromRole="ChiTietMenu" ToRole="SanPham" />
-        </EntityType>
-        <EntityType Name="Menu">
-          <Key>
-            <PropertyRef Name="ma_menu" />
-          </Key>
-          <Property Name="ma_menu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ten_menu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ChiTietMenus" Relationship="NhaHangModel.ctmn_mn" FromRole="Menu" ToRole="ChiTietMenu" />
-        </EntityType>
         <Association Name="ctmn_mn">
           <End Type="NhaHangModel.Menu" Role="Menu" Multiplicity="0..1" />
           <End Type="NhaHangModel.ChiTietMenu" Role="ChiTietMenu" Multiplicity="*" />
@@ -471,7 +425,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="pk_nv">
+          <End Type="NhaHangModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+          <End Type="NhaHangModel.HoaDon" Role="HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ma_nv" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="ma_nv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -480,6 +446,7 @@
           <EntitySetMapping Name="Bans">
             <EntityTypeMapping TypeName="NhaHangModel.Ban">
               <MappingFragment StoreEntitySet="Ban">
+                <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
                 <ScalarProperty Name="ten_ban" ColumnName="ten_ban" />
                 <ScalarProperty Name="ma_ban" ColumnName="ma_ban" />
               </MappingFragment>
@@ -491,6 +458,16 @@
                 <ScalarProperty Name="so_luong" ColumnName="so_luong" />
                 <ScalarProperty Name="ma_sp" ColumnName="ma_sp" />
                 <ScalarProperty Name="ma_hd" ColumnName="ma_hd" />
+                <ScalarProperty Name="ma_cthd" ColumnName="ma_cthd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietMenus">
+            <EntityTypeMapping TypeName="NhaHangModel.ChiTietMenu">
+              <MappingFragment StoreEntitySet="ChiTietMenu">
+                <ScalarProperty Name="ma_sp" ColumnName="ma_sp" />
+                <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
+                <ScalarProperty Name="ma_ct_mn" ColumnName="ma_ct_mn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -509,7 +486,6 @@
                 <ScalarProperty Name="trang_thai_hd" ColumnName="trang_thai_hd" />
                 <ScalarProperty Name="ngay" ColumnName="ngay" />
                 <ScalarProperty Name="ma_ban" ColumnName="ma_ban" />
-                <ScalarProperty Name="ma_kh" ColumnName="ma_kh" />
                 <ScalarProperty Name="ma_nv" ColumnName="ma_nv" />
                 <ScalarProperty Name="ma_hd" ColumnName="ma_hd" />
               </MappingFragment>
@@ -531,6 +507,14 @@
                 <ScalarProperty Name="yeu_cau" ColumnName="yeu_cau" />
                 <ScalarProperty Name="ten_km" ColumnName="ten_km" />
                 <ScalarProperty Name="ma_km" ColumnName="ma_km" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="NhaHangModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
+                <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -566,23 +550,6 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ChiTietMenus">
-            <EntityTypeMapping TypeName="NhaHangModel.ChiTietMenu">
-              <MappingFragment StoreEntitySet="ChiTietMenu">
-                <ScalarProperty Name="ma_sp" ColumnName="ma_sp" />
-                <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
-                <ScalarProperty Name="ma_ct_mn" ColumnName="ma_ct_mn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Menus">
-            <EntityTypeMapping TypeName="NhaHangModel.Menu">
-              <MappingFragment StoreEntitySet="Menu">
-                <ScalarProperty Name="ten_menu" ColumnName="ten_menu" />
-                <ScalarProperty Name="ma_menu" ColumnName="ma_menu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
