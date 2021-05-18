@@ -87,11 +87,7 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void updateData()
         {
-            List<NhanVien> dsNV = db.NhanViens.ToList();
-            for(int i= 0;i < dsNV.Count;++i)
-            {
-                dsNV[i].HoaDons = null;
-            }
+            var dsNV = (from nv in db.NhanViens select new { ma_nv = nv.ma_nv, ten_nv = nv.ten_nv, username = nv.ten_nv, password = nv.password, ngay_sinh = nv.ngay_sinh, chuc_vu = nv.chuc_vu }).ToList();
             dataGridView1.DataSource = dsNV;
         }
 

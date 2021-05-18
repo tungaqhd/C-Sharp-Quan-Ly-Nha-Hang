@@ -28,9 +28,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         public virtual DbSet<Ban> Bans { get; set; }
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<ChiTietMenu> ChiTietMenus { get; set; }
-        public virtual DbSet<DanhSach> DanhSaches { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
-        public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }

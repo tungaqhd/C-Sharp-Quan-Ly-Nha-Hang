@@ -29,33 +29,36 @@ namespace BTL_Quan_Ly_Nha_Hang
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyMenuForm));
             this.dtgvMenu = new System.Windows.Forms.DataGridView();
             this.btnChinhSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgvMenu
             // 
+            this.dtgvMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvMenu.Location = new System.Drawing.Point(9, 81);
-            this.dtgvMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.dtgvMenu.Location = new System.Drawing.Point(13, 137);
             this.dtgvMenu.Name = "dtgvMenu";
             this.dtgvMenu.RowHeadersWidth = 51;
             this.dtgvMenu.RowTemplate.Height = 24;
-            this.dtgvMenu.Size = new System.Drawing.Size(634, 318);
+            this.dtgvMenu.Size = new System.Drawing.Size(951, 539);
             this.dtgvMenu.TabIndex = 0;
             this.dtgvMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvMenu_CellClick);
             // 
             // btnChinhSua
             // 
-            this.btnChinhSua.Location = new System.Drawing.Point(664, 109);
-            this.btnChinhSua.Margin = new System.Windows.Forms.Padding(2);
+            this.btnChinhSua.Image = ((System.Drawing.Image)(resources.GetObject("btnChinhSua.Image")));
+            this.btnChinhSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChinhSua.Location = new System.Drawing.Point(970, 176);
             this.btnChinhSua.Name = "btnChinhSua";
-            this.btnChinhSua.Size = new System.Drawing.Size(75, 19);
+            this.btnChinhSua.Size = new System.Drawing.Size(138, 33);
             this.btnChinhSua.TabIndex = 1;
             this.btnChinhSua.Text = "Chỉnh sửa";
             this.btnChinhSua.UseVisualStyleBackColor = true;
@@ -63,10 +66,11 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(664, 132);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
+            this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(970, 215);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 19);
+            this.btnXoa.Size = new System.Drawing.Size(138, 33);
             this.btnXoa.TabIndex = 1;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -74,43 +78,59 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(664, 81);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(970, 137);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 19);
+            this.btnThem.Size = new System.Drawing.Size(138, 33);
             this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm mới";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(9, 36);
+            this.txtSearch.Location = new System.Drawing.Point(13, 65);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(100, 20);
+            this.txtSearch.Size = new System.Drawing.Size(177, 29);
             this.txtSearch.TabIndex = 2;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(132, 32);
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(198, 65);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(143, 29);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(150, 22);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Tên menu cần tìm:";
+            // 
             // QuanLyMenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 409);
+            this.ClientSize = new System.Drawing.Size(1122, 693);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnChinhSua);
             this.Controls.Add(this.dtgvMenu);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "QuanLyMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý Menu";
@@ -129,5 +149,6 @@ namespace BTL_Quan_Ly_Nha_Hang
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label1;
     }
 }

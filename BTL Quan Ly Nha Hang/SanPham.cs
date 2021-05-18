@@ -27,6 +27,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         public Nullable<int> so_luong { get; set; }
         public Nullable<int> don_gia { get; set; }
         public string loai { get; set; }
+        public byte[] anh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }

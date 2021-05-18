@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,29 +13,30 @@ namespace BTL_Quan_Ly_Nha_Hang
 {
     public partial class QuanLySanPham : Form
     {
-        NhaHangEntities db = new NhaHangEntities();
         int selectedRow = 0;
+        MemoryStream ms;
         public QuanLySanPham()
         {
             InitializeComponent();
         }
 
-        private void addBinding()
-        {
-            //tbxMa.DataBindings.Add(new Binding("Text", dtgvSanPham.DataSource, "ma_sp"));
-            //tbxTen.DataBindings.Add(new Binding("Text", dtgvSanPham.DataSource, "ten_sp"));
-            //tbxMoTa.DataBindings.Add(new Binding("Text", dtgvSanPham.DataSource, "mo_ta"));
-            //tbxDonGia.DataBindings.Add(new Binding("Text", dtgvSanPham.DataSource, "don_gia"));
-            //tbxSoLuong.DataBindings.Add(new Binding("Text", dtgvSanPham.DataSource, "so_luong"));
-        }
         private void updateData()
         {
-            List<SanPham> dsSp = db.SanPhams.ToList();
-            foreach (SanPham sp in dsSp)
+            using (NhaHangEntities db = new NhaHangEntities())
             {
-                sp.ChiTietHoaDons = null;
+                var dsSp = (from s in db.SanPhams
+                            select new
+                            {
+                                ma_sp = s.ma_sp,
+                                ten_sp = s.ten_sp,
+                                mo_ta = s.mo_ta,
+                                so_luong = s.so_luong,
+                                don_gia = s.don_gia,
+                                loai = s.loai,
+                                anh = s.anh
+                            }).ToList();
+                dtgvSanPham.DataSource = dsSp;
             }
-            dtgvSanPham.DataSource = dsSp;
         }
 
         private void resetForm()
@@ -49,6 +51,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             tbxSoLuong.Text = "";
 
             tbxDonGia.Text = "";
+
+            ptbPreview.Image = null;
         }
 
         private void QuanLySanPham_Load(object sender, EventArgs e)
@@ -61,8 +65,11 @@ namespace BTL_Quan_Ly_Nha_Hang
             dtgvSanPham.Columns[3].HeaderText = "Số lượng";
             dtgvSanPham.Columns[4].HeaderText = "Đơn giá";
             dtgvSanPham.Columns[5].HeaderText = "Loại";
+            dtgvSanPham.Columns[6].HeaderText = "Ảnh";
 
             cbxLoai.Text = "Đồ ăn";
+
+            ((DataGridViewImageColumn)dtgvSanPham.Columns[6]).ImageLayout = DataGridViewImageCellLayout.Stretch;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -73,8 +80,11 @@ namespace BTL_Quan_Ly_Nha_Hang
             int donGia = Convert.ToInt32(tbxDonGia.Text);
             string loai = cbxLoai.Text;
 
-            db.SanPhams.Add(new SanPham() { ten_sp = ten, mo_ta = moTa, so_luong = soLuong, don_gia = donGia, loai = loai });
-            db.SaveChanges();
+            using (NhaHangEntities db = new NhaHangEntities())
+            {
+                db.SanPhams.Add(new SanPham() { ten_sp = ten, mo_ta = moTa, so_luong = soLuong, don_gia = donGia, loai = loai });
+                db.SaveChanges();
+            }
 
             updateData();
         }
@@ -94,8 +104,16 @@ namespace BTL_Quan_Ly_Nha_Hang
 
             tbxDonGia.Text = dtgvSanPham.Rows[selectedRow].Cells[4].Value.ToString();
 
-            string loai = dtgvSanPham.Rows[selectedRow].Cells[5].Value.ToString();
-            cbxLoai.Text = loai;   
+            cbxLoai.Text = dtgvSanPham.Rows[selectedRow].Cells[5].Value.ToString();
+
+            if (dtgvSanPham.Rows[selectedRow].Cells[6].Value == null)
+            {
+                ptbPreview.Image = null;
+            }
+            else
+            {
+                ptbPreview.Image = ConvertBinaryToImage((byte[])dtgvSanPham.Rows[selectedRow].Cells[6].Value);
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -103,18 +121,56 @@ namespace BTL_Quan_Ly_Nha_Hang
             resetForm();
         }
 
+        byte[] ConvertImageToBinary(Image img)
+        {
+            try
+            {
+                ms = new MemoryStream();
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return null;
+        }
+
+        Image ConvertBinaryToImage(byte[] data)
+        {
+            ms = new MemoryStream(data);
+            return Image.FromStream(ms);
+        }
+
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            int maSp = Convert.ToInt32(tbxMa.Text);
-            SanPham sp = db.SanPhams.Find(maSp);
+            int maSp;
+            try
+            {
+                maSp = Convert.ToInt32(tbxMa.Text);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            using (NhaHangEntities db = new NhaHangEntities())
+            {
+                SanPham sp = db.SanPhams.Find(maSp);
 
-            sp.ten_sp = tbxTen.Text;
-            sp.mo_ta = tbxMoTa.Text;
-            sp.so_luong = Convert.ToInt32(tbxSoLuong.Text);
-            sp.don_gia = Convert.ToInt32(tbxDonGia.Text);
-            sp.loai = cbxLoai.Text;
+                sp.ten_sp = tbxTen.Text;
+                sp.mo_ta = tbxMoTa.Text;
+                sp.so_luong = Convert.ToInt32(tbxSoLuong.Text);
+                sp.don_gia = Convert.ToInt32(tbxDonGia.Text);
+                sp.loai = cbxLoai.Text;
 
-            db.SaveChanges();
+                if (ptbPreview.Image != null)
+                {
+                    sp.anh = ConvertImageToBinary(ptbPreview.Image);
+                }
+
+                db.SaveChanges();
+            }
 
             updateData();
             resetForm();
@@ -123,11 +179,25 @@ namespace BTL_Quan_Ly_Nha_Hang
         private void btnXoa_Click(object sender, EventArgs e)
         {
             int maSp = Convert.ToInt32(tbxMa.Text);
-            SanPham sp = db.SanPhams.Find(maSp);
-            db.SanPhams.Remove(sp);
-            db.SaveChanges();
+            using (NhaHangEntities db = new NhaHangEntities())
+            {
+                SanPham sp = db.SanPhams.Find(maSp);
+                db.SanPhams.Remove(sp);
+                db.SaveChanges();
+            }
 
             updateData();
+        }
+
+        private void btnChon_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                ptbPreview.Image = new Bitmap(open.FileName);
+            }
+
         }
     }
 }

@@ -15,7 +15,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         int idx = -1;
         int idxBan = -1;
         int idxMenu = -1;
-        public int maNv = -1;
+        public NhanVien nv;
         List<Ban> dsBan;
         public NhanVienPanel()
         {
@@ -28,18 +28,24 @@ namespace BTL_Quan_Ly_Nha_Hang
 
             HienThiSanPham();
             HienThiMenu();
+
+            lblWelcome.Text = "Xin chào " + nv.ten_nv;
         }
 
         private void HienThiSanPham()
         {
             using (NhaHangEntities db = new NhaHangEntities())
             {
-                dtgvSanPham.DataSource = db.SanPhams.ToList();
+                var sp = (from s in db.SanPhams select new { ma_sp = s.ma_sp, ten_sp = s.ten_sp, mo_ta = s.mo_ta, so_luong = s.so_luong, don_gia = s.don_gia, loai = s.loai, anh = s.anh }).ToList();
+                dtgvSanPham.DataSource = sp;
+                ((DataGridViewImageColumn)dtgvSanPham.Columns[6]).ImageLayout = DataGridViewImageCellLayout.Stretch;
                 dtgvSanPham.Columns[0].HeaderText = "Mã";
                 dtgvSanPham.Columns[1].HeaderText = "Tên";
                 dtgvSanPham.Columns[2].HeaderText = "Số lượng còn";
                 dtgvSanPham.Columns[3].HeaderText = "Loại";
                 dtgvSanPham.Columns[4].HeaderText = "Đơn giá";
+                dtgvSanPham.Columns[5].HeaderText = "Loại";
+                dtgvSanPham.Columns[6].HeaderText = "Ảnh";
             }
         }
 
@@ -68,18 +74,18 @@ namespace BTL_Quan_Ly_Nha_Hang
             using (NhaHangEntities db = new NhaHangEntities())
             {
                 var ct = (from c in db.ChiTietHoaDons
-                      join s in db.SanPhams on c.ma_sp equals s.ma_sp
-                      where c.ma_hd == maHD
-                      select new { c.ma_sp, s.ten_sp, c.so_luong, s.don_gia } into tmp
-                      group tmp by new {tmp.ma_sp, tmp.ten_sp, tmp.don_gia} into final
-                      select new
-                      {
-                          ma_sp = final.Key.ma_sp,
-                          ten_sp = final.Key.ten_sp,
-                          don_gia = final.Key.don_gia,
-                          so_luong = final.Sum(f => f.so_luong),
-                          tong = final.Sum(f => f.so_luong * f.don_gia)
-                      }).ToList();
+                          join s in db.SanPhams on c.ma_sp equals s.ma_sp
+                          where c.ma_hd == maHD
+                          select new { c.ma_sp, s.ten_sp, c.so_luong, s.don_gia } into tmp
+                          group tmp by new { tmp.ma_sp, tmp.ten_sp, tmp.don_gia } into final
+                          select new
+                          {
+                              ma_sp = final.Key.ma_sp,
+                              ten_sp = final.Key.ten_sp,
+                              don_gia = final.Key.don_gia,
+                              so_luong = final.Sum(f => f.so_luong),
+                              tong = final.Sum(f => f.so_luong * f.don_gia)
+                          }).ToList();
 
                 dtgvChiTietHD.DataSource = null;
                 dtgvChiTietHD.DataSource = ct;
@@ -89,7 +95,7 @@ namespace BTL_Quan_Ly_Nha_Hang
                 dtgvChiTietHD.Columns[3].HeaderText = "Số lượng";
                 dtgvChiTietHD.Columns[4].HeaderText = "Thành tiền";
 
-                foreach(var tt in ct)
+                foreach (var tt in ct)
                 {
                     tongTien += (int)tt.tong;
                 }
@@ -97,20 +103,58 @@ namespace BTL_Quan_Ly_Nha_Hang
             }
         }
 
+        private bool kiemTraHoaDonTonTai()
+        {
+            if (idxBan == -1)
+            {
+                return false;
+            }
+
+            int maBan = dsBan[idxBan].ma_ban;
+            if (dsBan[idxBan].trang_thai == 1)
+            {
+                using (NhaHangEntities db = new NhaHangEntities())
+                {
+                    DateTime ngay = DateTime.Now;
+
+                    db.HoaDons.Add(new HoaDon() { ma_ban = maBan, ma_nv = nv.ma_nv, ngay = ngay, trang_thai_hd = 0 });
+                    Ban ban = db.Bans.Where(b => b.ma_ban == maBan).FirstOrDefault();
+                    ban.trang_thai = 0;
+
+                    db.SaveChanges();
+                }
+            }
+
+            HienThiBan();
+            LoadBan(idxBan);
+            lvBan.Items[idxBan].Selected = true;
+            return true;
+        }
+
         private void HienThiMenu()
         {
             dtgvMenu.DataSource = null;
             using (NhaHangEntities db = new NhaHangEntities())
             {
-                dtgvMenu.DataSource = db.Menus.ToList();
+                dtgvMenu.DataSource = (from m in db.Menus select new { ma_menu = m.ma_menu, ten_menu = m.ten_menu }).ToList();
+                dtgvMenu.Columns[0].HeaderText = "Mã menu";
+                dtgvMenu.Columns[1].HeaderText = "Tên menu";
             }
         }
 
         private void dtgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            idx = e.RowIndex;
-            cbxMon.Text = dtgvSanPham.Rows[idx].Cells[5].Value.ToString();
-            txtTenMon.Text = dtgvSanPham.Rows[idx].Cells[1].Value.ToString();
+            try
+            {
+                idx = e.RowIndex;
+                cbxMon.Text = dtgvSanPham.Rows[idx].Cells[5].Value.ToString();
+                txtTenMon.Text = dtgvSanPham.Rows[idx].Cells[1].Value.ToString();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btnTim_Click(object sender, EventArgs e)
@@ -133,7 +177,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             Ban ban = dsBan[idxBan];
 
             txtTenban.Text = ban.ten_ban;
-            txtTrangThai.Text = ban.trang_thai == 0 ? "Trống" : "Có người";
+            txtTrangThai.Text = ban.trang_thai == 1 ? "Trống" : "Có người";
             using (NhaHangEntities db = new NhaHangEntities())
             {
                 HoaDon hd = db.HoaDons.Where(h => h.ma_ban == ban.ma_ban && h.trang_thai_hd == 0).FirstOrDefault();
@@ -152,12 +196,12 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if(idxBan == -1)
+            if (!kiemTraHoaDonTonTai())
             {
                 MessageBox.Show("Chưa chọn bàn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if(idx == -1)
+            else if (idx == -1)
             {
                 MessageBox.Show("Chưa chọn sản phẩm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -165,14 +209,16 @@ namespace BTL_Quan_Ly_Nha_Hang
 
             int maSp = Convert.ToInt32(dtgvSanPham.Rows[idx].Cells[0].Value.ToString());
             int maHd = Convert.ToInt32(txtMaHD.Text);
-            int soLuong = 0;
+            int soLuong;
             try
             {
                 soLuong = Convert.ToInt32(txtSoLuong.Text);
-                if(soLuong <= 0)
+                if (soLuong <= 0)
                 {
                     throw new Exception();
                 }
+
+                int maBan = dsBan[idxBan].ma_ban;
                 using (NhaHangEntities db = new NhaHangEntities())
                 {
                     db.ChiTietHoaDons.Add(new ChiTietHoaDon() { ma_sp = maSp, ma_hd = maHd, so_luong = soLuong });
@@ -188,27 +234,21 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void btnTrangThai_Click(object sender, EventArgs e)
         {
-            int maBan = dsBan[idxBan].ma_ban;
-            DateTime ngay = DateTime.Now;
-            using (NhaHangEntities db = new NhaHangEntities())
-            {
-                db.HoaDons.Add(new HoaDon() { ma_ban = maBan, ma_nv = maNv, ngay = ngay, trang_thai_hd = 0 });
-                Ban ban = db.Bans.Where(b => b.ma_ban == maBan).FirstOrDefault();
-                ban.trang_thai = 0;
-                db.SaveChanges();
-            }
-
-            HienThiBan();
-            LoadBan(idxBan);
-            lvBan.Items[idxBan].Selected = true;
-            HienThiChiTietHoaDon();
 
         }
 
         private void dtgvMenu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            idxMenu = e.RowIndex;
-            txtTenMenu.Text = dtgvMenu.Rows[idxMenu].Cells[1].Value.ToString();
+            try
+            {
+                idxMenu = e.RowIndex;
+                txtTenMenu.Text = dtgvMenu.Rows[idxMenu].Cells[1].Value.ToString();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btnTimMenu_Click(object sender, EventArgs e)
@@ -222,7 +262,7 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void btnThemMenu_Click(object sender, EventArgs e)
         {
-            if (idxBan == -1)
+            if (!kiemTraHoaDonTonTai())
             {
                 MessageBox.Show("Chưa chọn bàn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -241,8 +281,9 @@ namespace BTL_Quan_Ly_Nha_Hang
             {
                 using (NhaHangEntities db = new NhaHangEntities())
                 {
+
                     int sl = Convert.ToInt32(txtSoLuongMenu.Text);
-                    if (sl<= 0)
+                    if (sl <= 0)
                     {
                         throw new Exception();
                     }
@@ -280,7 +321,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             thanhToanForm.maBan = dsBan[idxBan].ma_ban;
             thanhToanForm.maHD = Convert.ToInt32(txtMaHD.Text);
             thanhToanForm.maGiamGia = txtGiamGia.Text;
-            
+
             if (thanhToanForm.ShowDialog(this) == DialogResult.OK)
             {
                 using (NhaHangEntities db = new NhaHangEntities())

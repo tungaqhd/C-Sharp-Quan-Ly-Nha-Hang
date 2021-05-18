@@ -30,6 +30,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         public virtual Ban Ban { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual KhuyenMai KhuyenMai { get; set; }
         public virtual NhanVien NhanVien { get; set; }
     }
 }

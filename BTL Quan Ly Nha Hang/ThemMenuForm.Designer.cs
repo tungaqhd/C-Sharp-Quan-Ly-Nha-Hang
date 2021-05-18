@@ -29,6 +29,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThemMenuForm));
             this.label1 = new System.Windows.Forms.Label();
             this.tbxTen = new System.Windows.Forms.TextBox();
             this.dtgvMenu = new System.Windows.Forms.DataGridView();
@@ -43,42 +44,55 @@ namespace BTL_Quan_Ly_Nha_Hang
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 13);
+            this.label1.Location = new System.Drawing.Point(56, 43);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(89, 22);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Tên Menu";
+            this.label1.Text = "Tên Menu:";
             // 
             // tbxTen
             // 
-            this.tbxTen.Location = new System.Drawing.Point(40, 41);
+            this.tbxTen.Location = new System.Drawing.Point(60, 69);
+            this.tbxTen.Margin = new System.Windows.Forms.Padding(4);
             this.tbxTen.Name = "tbxTen";
-            this.tbxTen.Size = new System.Drawing.Size(276, 20);
+            this.tbxTen.Size = new System.Drawing.Size(412, 29);
             this.tbxTen.TabIndex = 1;
             // 
             // dtgvMenu
             // 
+            this.dtgvMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtgvMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dtgvMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvMenu.Location = new System.Drawing.Point(40, 81);
+            this.dtgvMenu.Location = new System.Drawing.Point(60, 136);
+            this.dtgvMenu.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvMenu.Name = "dtgvMenu";
-            this.dtgvMenu.Size = new System.Drawing.Size(454, 319);
+            this.dtgvMenu.Size = new System.Drawing.Size(681, 540);
             this.dtgvMenu.TabIndex = 2;
             this.dtgvMenu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvMenu_CellClick);
             // 
             // dtgvSanPham
             // 
+            this.dtgvSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtgvSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dtgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvSanPham.Location = new System.Drawing.Point(581, 81);
+            this.dtgvSanPham.Location = new System.Drawing.Point(872, 136);
+            this.dtgvSanPham.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvSanPham.Name = "dtgvSanPham";
-            this.dtgvSanPham.Size = new System.Drawing.Size(454, 319);
+            this.dtgvSanPham.Size = new System.Drawing.Size(681, 540);
             this.dtgvSanPham.TabIndex = 2;
             this.dtgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPham_CellClick);
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(500, 160);
+            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(750, 271);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.Size = new System.Drawing.Size(112, 40);
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -86,9 +100,12 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(500, 189);
+            this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(750, 320);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.Size = new System.Drawing.Size(112, 40);
             this.btnXoa.TabIndex = 4;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -96,9 +113,13 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(40, 415);
+            this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuu.Location = new System.Drawing.Point(60, 703);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.Size = new System.Drawing.Size(112, 40);
             this.btnLuu.TabIndex = 5;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -106,9 +127,9 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // ThemMenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 450);
+            this.ClientSize = new System.Drawing.Size(1611, 761);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnThem);
@@ -116,6 +137,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.dtgvMenu);
             this.Controls.Add(this.tbxTen);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ThemMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm Menu";

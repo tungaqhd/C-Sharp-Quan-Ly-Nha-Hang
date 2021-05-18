@@ -39,10 +39,15 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // dtgvHoaDon
             // 
+            this.dtgvHoaDon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgvHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dtgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvHoaDon.Location = new System.Drawing.Point(12, 54);
+            this.dtgvHoaDon.Location = new System.Drawing.Point(27, 107);
+            this.dtgvHoaDon.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.dtgvHoaDon.Name = "dtgvHoaDon";
-            this.dtgvHoaDon.Size = new System.Drawing.Size(592, 496);
+            this.dtgvHoaDon.Size = new System.Drawing.Size(660, 646);
             this.dtgvHoaDon.TabIndex = 0;
             this.dtgvHoaDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvHoaDon_CellClick);
             this.dtgvHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewhoadon_CellContentClick);
@@ -50,38 +55,46 @@ namespace BTL_Quan_Ly_Nha_Hang
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 38);
+            this.label1.Location = new System.Drawing.Point(22, 76);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 13);
+            this.label1.Size = new System.Drawing.Size(200, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Các hóa đơn gần đây";
             // 
             // dtgvChiTiet
             // 
+            this.dtgvChiTiet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgvChiTiet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dtgvChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvChiTiet.Location = new System.Drawing.Point(647, 54);
+            this.dtgvChiTiet.Location = new System.Drawing.Point(817, 107);
+            this.dtgvChiTiet.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.dtgvChiTiet.Name = "dtgvChiTiet";
-            this.dtgvChiTiet.Size = new System.Drawing.Size(553, 496);
+            this.dtgvChiTiet.Size = new System.Drawing.Size(617, 646);
             this.dtgvChiTiet.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(644, 38);
+            this.label2.Location = new System.Drawing.Point(812, 76);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(156, 26);
             this.label2.TabIndex = 3;
             this.label2.Text = "Chi tiết hóa đơn";
             // 
             // Quanlyhoadon
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1212, 562);
+            this.ClientSize = new System.Drawing.Size(1449, 767);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtgvChiTiet);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtgvHoaDon);
+            this.Font = new System.Drawing.Font("Open Sans", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "Quanlyhoadon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý hóa đơn";

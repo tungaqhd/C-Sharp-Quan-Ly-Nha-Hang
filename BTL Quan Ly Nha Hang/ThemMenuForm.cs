@@ -39,23 +39,41 @@ namespace BTL_Quan_Ly_Nha_Hang
                 }
             }
             dtgvMenu.DataSource = dsSp;
+            dtgvMenu.Columns[0].HeaderText = "Mã sản phẩm";
+            dtgvMenu.Columns[1].HeaderText = "Tên";
+            dtgvMenu.Columns[2].HeaderText = "Mô tả";
+            dtgvMenu.Columns[3].HeaderText = "Số lượng";
+            dtgvMenu.Columns[4].HeaderText = "Đơn giá";
+            dtgvMenu.Columns[5].HeaderText = "Loại";
+            dtgvMenu.Columns[6].HeaderText = "Ảnh";
         }
 
         private void ThemMenuForm_Load(object sender, EventArgs e)
         {
-            List<SanPham> dsSp = db.SanPhams.ToList();
-            dtgvSanPham.DataSource = dsSp;
-
-            if(isEditing)
+            using(NhaHangEntities db = new NhaHangEntities())
             {
-                tbxTen.Text = tenMenu;
-                List<ChiTietMenu> dsMon = db.ChiTietMenus.Where(ct => ct.ma_menu == editId).ToList();
-                foreach(ChiTietMenu mon in dsMon)
+                var dsSp = (from sp in db.SanPhams select new {ma_sp = sp.ma_sp, ten_sp = sp.ten_sp, mo_ta = sp.mo_ta, so_luong = sp.so_luong, don_gia = sp.don_gia, loai = sp.loai, anh = sp.anh}).ToList();
+                dtgvSanPham.DataSource = dsSp;
+                ((DataGridViewImageColumn)dtgvSanPham.Columns[6]).ImageLayout = DataGridViewImageCellLayout.Stretch;
+                dtgvSanPham.Columns[0].HeaderText = "Mã sản phẩm";
+                dtgvSanPham.Columns[1].HeaderText = "Tên";
+                dtgvSanPham.Columns[2].HeaderText = "Mô tả";
+                dtgvSanPham.Columns[3].HeaderText = "Số lượng";
+                dtgvSanPham.Columns[4].HeaderText = "Đơn giá";
+                dtgvSanPham.Columns[5].HeaderText = "Loại";
+                dtgvSanPham.Columns[6].HeaderText = "Ảnh";
+
+                if (isEditing)
                 {
-                    dsMenu.Add((int)mon.ma_sp);
-                    dsMenuEdit.Add((int)mon.ma_sp);
+                    tbxTen.Text = tenMenu;
+                    List<ChiTietMenu> dsMon = db.ChiTietMenus.Where(ct => ct.ma_menu == editId).ToList();
+                    foreach (ChiTietMenu mon in dsMon)
+                    {
+                        dsMenu.Add((int)mon.ma_sp);
+                        dsMenuEdit.Add((int)mon.ma_sp);
+                    }
+                    captNhatMenu();
                 }
-                captNhatMenu();
             }
         }
 

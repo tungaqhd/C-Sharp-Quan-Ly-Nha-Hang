@@ -14,9 +14,18 @@ namespace BTL_Quan_Ly_Nha_Hang
     
     public partial class KhuyenMai
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public KhuyenMai()
+        {
+            this.HoaDons = new HashSet<HoaDon>();
+        }
+    
         public string ma_km { get; set; }
         public string ten_km { get; set; }
         public Nullable<int> yeu_cau { get; set; }
         public Nullable<int> tien_giam { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

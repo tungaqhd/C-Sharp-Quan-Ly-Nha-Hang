@@ -29,6 +29,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyBan));
             this.label1 = new System.Windows.Forms.Label();
             this.txtTenBan = new System.Windows.Forms.TextBox();
             this.dtgvBan = new System.Windows.Forms.DataGridView();
@@ -42,25 +43,28 @@ namespace BTL_Quan_Ly_Nha_Hang
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 62);
+            this.label1.Location = new System.Drawing.Point(27, 125);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(91, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên bàn:";
             // 
             // txtTenBan
             // 
-            this.txtTenBan.Location = new System.Drawing.Point(71, 62);
+            this.txtTenBan.Location = new System.Drawing.Point(130, 125);
+            this.txtTenBan.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtTenBan.Name = "txtTenBan";
-            this.txtTenBan.Size = new System.Drawing.Size(164, 20);
+            this.txtTenBan.Size = new System.Drawing.Size(297, 33);
             this.txtTenBan.TabIndex = 1;
             // 
             // dtgvBan
             // 
             this.dtgvBan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvBan.Location = new System.Drawing.Point(12, 147);
+            this.dtgvBan.Location = new System.Drawing.Point(22, 295);
+            this.dtgvBan.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.dtgvBan.Name = "dtgvBan";
-            this.dtgvBan.Size = new System.Drawing.Size(328, 320);
+            this.dtgvBan.Size = new System.Drawing.Size(601, 640);
             this.dtgvBan.TabIndex = 2;
             this.dtgvBan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvBan_CellClick);
             // 
@@ -68,7 +72,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(74, 9);
+            this.label2.Location = new System.Drawing.Point(227, 19);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(200, 39);
             this.label2.TabIndex = 3;
@@ -76,9 +81,12 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(241, 59);
+            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(442, 118);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.Size = new System.Drawing.Size(115, 47);
             this.btnThem.TabIndex = 4;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -86,9 +94,12 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(241, 88);
+            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(442, 177);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.Size = new System.Drawing.Size(115, 47);
             this.btnSua.TabIndex = 5;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -96,9 +107,12 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(241, 120);
+            this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(442, 239);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.Size = new System.Drawing.Size(115, 47);
             this.btnXoa.TabIndex = 6;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -106,9 +120,9 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // QuanLyBan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 479);
+            this.ClientSize = new System.Drawing.Size(644, 959);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -116,6 +130,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.dtgvBan);
             this.Controls.Add(this.txtTenBan);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Open Sans", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "QuanLyBan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý bàn";

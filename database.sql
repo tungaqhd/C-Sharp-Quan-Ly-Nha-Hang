@@ -11,26 +11,17 @@ create table NhanVien (
 	chuc_vu varchar(10)
 )
 
-create table KhachHang (
-	ma_kh int not null identity primary key,
-	ten_kh nvarchar(60),
-	sdt char(12)
-)
-
 create table SanPham (
 	ma_sp int not null identity primary key,
 	ten_sp nvarchar(60),
 	mo_ta nvarchar(200),
 	so_luong int,
 	don_gia int,
-	loai nvarchar(20)
+	loai nvarchar(20),
+	anh image
 )
-
-create table DanhSach (
-	ma_ds int not null identity primary key,
-	ten_ds nvarchar(60)
-)
-
+alter table SanPham drop column image
+alter table SanPham add anh image
 create table Ban (
 	ma_ban int not null identity primary key,
 	ten_ban nvarchar(20),
@@ -45,11 +36,9 @@ create table HoaDon (
 	trang_thai_hd int,
 	ma_km char(10),
 	constraint pk_nv foreign key(ma_nv) references NhanVien(ma_nv),
-	constraint pk_ban foreign key(ma_ban) references Ban(ma_ban)
+	constraint pf_ban foreign key(ma_ban) references Ban(ma_ban),
+	constraint fk_km foreign key(ma_km) references KhuyenMai(ma_km)
 )
-
---alter table HoaDon drop column ma_kh
---alter table HoaDon drop constraint pk_kh
 
 create table ChiTietHoaDon (
 	ma_cthd int not null identity primary key,
@@ -76,8 +65,8 @@ create table ChiTietMenu (
 	ma_ct_mn int not null identity primary key,
 	ma_menu int,
 	ma_sp int,
-	constraint ctmn_mn foreign key(ma_menu) references Menu(ma_menu),
-	constraint ctmn_sp foreign key(ma_sp) references SanPham(ma_sp),
+	constraint fk_ctmn_mn foreign key(ma_menu) references Menu(ma_menu),
+	constraint fk_ctmn_sp foreign key(ma_sp) references SanPham(ma_sp),
 )
 
 insert into SanPham values
@@ -98,13 +87,6 @@ insert into Ban values
 (N'Bàn 9'),
 (N'Bàn 10')
 
-
-alter table SanPham alter column loai nvarchar(20)
-alter table Ban add trang_thai int default 0
-select * from SanPham
-select * from ChiTietMenu
-delete from Menu
-delete from ChiTietMenu
-select * from Ban
-select * from HoaDon
-update Ban set trang_thai = 0
+insert into NhanVien values
+(N'Quản trị viên 1', 'admin', '123', '1/1/2000', 'quanly'),
+(N'Nhân viên 1', 'user', '123', '1/1/2000', 'nhanvien')

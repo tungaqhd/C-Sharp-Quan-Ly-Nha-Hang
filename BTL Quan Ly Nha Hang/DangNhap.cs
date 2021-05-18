@@ -33,12 +33,13 @@ namespace BTL_Quan_Ly_Nha_Hang
                 if(user.chuc_vu == "quanly")
                 {
                     QuanLyPanel quanLyPanel = new QuanLyPanel();
-                    quanLyPanel.ShowDialog();
+                    quanLyPanel.nv = user;
+                    quanLyPanel.Show();
                 }
                 else
                 {
                     NhanVienPanel nhanVienPanel = new NhanVienPanel();
-                    nhanVienPanel.maNv = user.ma_nv;
+                    nhanVienPanel.nv = user;
                     nhanVienPanel.Show();
                 }
             }    
