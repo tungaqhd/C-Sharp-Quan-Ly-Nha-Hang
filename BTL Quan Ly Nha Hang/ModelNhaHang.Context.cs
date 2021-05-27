@@ -33,6 +33,5 @@ namespace BTL_Quan_Ly_Nha_Hang
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

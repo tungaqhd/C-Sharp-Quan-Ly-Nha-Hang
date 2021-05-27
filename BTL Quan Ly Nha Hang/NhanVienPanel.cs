@@ -49,6 +49,17 @@ namespace BTL_Quan_Ly_Nha_Hang
             }
         }
 
+        private void HienThiBanChuyen(int maBan)
+        {
+            using (NhaHangEntities db = new NhaHangEntities())
+            {
+                var banTrong = db.Bans.Where(b => b.trang_thai == 1 && b.ma_ban != maBan).ToList();
+                cbxChuyenBan.ValueMember = "ma_ban";
+                cbxChuyenBan.DisplayMember = "ten_ban";
+                cbxChuyenBan.DataSource = banTrong;
+            }
+        }
+
         private void HienThiBan()
         {
             using (NhaHangEntities db = new NhaHangEntities())
@@ -170,6 +181,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         {
             idxBan = lvBan.SelectedItems[0].Index;
             LoadBan(idxBan);
+            HienThiBanChuyen(dsBan[idxBan].ma_ban);
         }
 
         private void LoadBan(int maban)
@@ -221,10 +233,17 @@ namespace BTL_Quan_Ly_Nha_Hang
                 int maBan = dsBan[idxBan].ma_ban;
                 using (NhaHangEntities db = new NhaHangEntities())
                 {
+                    SanPham sp = db.SanPhams.Find(maSp);
+                    if(sp.so_luong < soLuong)
+                    {
+                        throw new Exception();
+                    }
+                    sp.so_luong -= soLuong;
                     db.ChiTietHoaDons.Add(new ChiTietHoaDon() { ma_sp = maSp, ma_hd = maHd, so_luong = soLuong });
                     db.SaveChanges();
                 }
                 HienThiChiTietHoaDon();
+                HienThiSanPham();
             }
             catch (Exception)
             {
@@ -287,21 +306,32 @@ namespace BTL_Quan_Ly_Nha_Hang
                     {
                         throw new Exception();
                     }
+                    List<ChiTietMenu> ct = db.ChiTietMenus.Where(c => c.ma_menu == maMenu).ToList();
+                    foreach (ChiTietMenu c in ct)
+                    {
+                        if(c.SanPham.so_luong < sl)
+                        {
+                            throw new Exception(c.SanPham.ten_sp + " không còn đủ hàng");
+                        }
+                    }
                     for (int i = 0; i < sl; ++i)
                     {
-                        List<ChiTietMenu> ct = db.ChiTietMenus.Where(c => c.ma_menu == maMenu).ToList();
                         foreach (ChiTietMenu c in ct)
                         {
+                            int maSp = (int)c.ma_sp;
+                            SanPham s = db.SanPhams.Find(maSp);
+                            s.so_luong -= sl;
                             db.ChiTietHoaDons.Add(new ChiTietHoaDon() { ma_sp = c.ma_sp, ma_hd = maHd, so_luong = 1 });
                         }
                     }
                     db.SaveChanges();
                 }
                 HienThiChiTietHoaDon();
+                HienThiSanPham();
             }
-            catch (Exception)
+            catch (Exception err)
             {
-                MessageBox.Show("Số lượng không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -317,6 +347,20 @@ namespace BTL_Quan_Ly_Nha_Hang
                 MessageBox.Show("Bàn này còn trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            if (txtGiamGia.Text != "")
+            {
+                using (NhaHangEntities db = new NhaHangEntities())
+                {
+                    KhuyenMai km = db.KhuyenMais.Find(txtGiamGia.Text);
+                    if (km == null)
+                    {
+                        MessageBox.Show("Mã khuyến mãi không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+            }
+
             ThanhToanForm thanhToanForm = new ThanhToanForm();
             thanhToanForm.maBan = dsBan[idxBan].ma_ban;
             thanhToanForm.maHD = Convert.ToInt32(txtMaHD.Text);
@@ -324,13 +368,69 @@ namespace BTL_Quan_Ly_Nha_Hang
 
             if (thanhToanForm.ShowDialog(this) == DialogResult.OK)
             {
+                HienThiBan();
+                LoadBan(idxBan);
+                lvBan.Items[idxBan].Selected = true;
+                MessageBox.Show("Đã thanh toán", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void thêmBànToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            DangNhap dangNhap = new DangNhap();
+            dangNhap.Closed += (s, args) => this.Close();
+            dangNhap.Show();
+        }
+
+        private void quảnLýKhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Quanlykho quanlykho = new Quanlykho();
+            quanlykho.ShowDialog();
+        }
+
+        private void quảnLýHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Quanlyhoadon quanlyhoadon = new Quanlyhoadon();
+            quanlyhoadon.ShowDialog();
+        }
+
+        private void btnChuyenban_Click(object sender, EventArgs e)
+        {
+            if (idxBan == -1)
+            {
+                MessageBox.Show("Chưa chọn bàn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (txtMaHD.Text == "")
+            {
+                MessageBox.Show("Bàn này còn trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                int idCu = dsBan[idxBan].ma_ban;
+                int idMoi = Convert.ToInt32(cbxChuyenBan.SelectedValue.ToString());
                 using (NhaHangEntities db = new NhaHangEntities())
                 {
-                    HienThiBan();
-                    LoadBan(idxBan);
-                    lvBan.Items[idxBan].Selected = true;
-                    MessageBox.Show("Đã thanh toán", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Ban banCu = db.Bans.Where(b => b.ma_ban == idCu).FirstOrDefault();
+                    banCu.trang_thai = 1;
+                    Ban banMoi= db.Bans.Where(b => b.ma_ban == idMoi).FirstOrDefault();
+                    banMoi.trang_thai = 0;
+                    HoaDon hdCu = db.HoaDons.Where(h => h.ma_ban == idCu && h.trang_thai_hd == 0).FirstOrDefault();
+                    hdCu.ma_ban = idMoi;
+                    db.SaveChanges();
                 }
+
+                HienThiBan();
+                LoadBan(idxBan);
+                lvBan.Items[idxBan].Selected = true;
+                MessageBox.Show("Đã chuyển bàn", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

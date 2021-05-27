@@ -102,7 +102,6 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void btnXuat_Click(object sender, EventArgs e)
         {
-
             DateTime fr = dtpFrom.Value;
             DateTime to = dtpTo.Value;
 
@@ -170,6 +169,20 @@ namespace BTL_Quan_Ly_Nha_Hang
         {
             KhuyenMaiForm khuyenMaiForm = new KhuyenMaiForm();
             khuyenMaiForm.ShowDialog();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            DangNhap dangNhap = new DangNhap();
+            dangNhap.Closed += (s, args) => this.Close();
+            dangNhap.Show();
+        }
+
+        private void thốngKêKhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Quanlykho quanlykho = new Quanlykho();
+            quanlykho.ShowDialog();
         }
     }
 }

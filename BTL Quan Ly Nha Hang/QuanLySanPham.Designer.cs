@@ -50,24 +50,24 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.qLNhaHangDataSet = new BTL_Quan_Ly_Nha_Hang.QLNhaHangDataSet();
             this.sanPhamTableAdapter = new BTL_Quan_Ly_Nha_Hang.QLNhaHangDataSetTableAdapters.SanPhamTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnChon = new System.Windows.Forms.Button();
+            this.ptbPreview = new System.Windows.Forms.PictureBox();
             this.cbxLoai = new System.Windows.Forms.ComboBox();
             this.btnReset = new System.Windows.Forms.Button();
-            this.dtgvSanPham = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.ptbPreview = new System.Windows.Forms.PictureBox();
-            this.btnChon = new System.Windows.Forms.Button();
+            this.dtgvSanPham = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLNhaHangDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvSanPham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPreview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvSanPham)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(573, 85);
+            this.label1.Location = new System.Drawing.Point(563, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(255, 25);
@@ -236,6 +236,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.btnChon);
             this.groupBox1.Controls.Add(this.ptbPreview);
             this.groupBox1.Controls.Add(this.cbxLoai);
@@ -256,14 +258,33 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.groupBox1.Controls.Add(this.tbxSoLuong);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(18, 85);
+            this.groupBox1.Location = new System.Drawing.Point(8, 21);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(518, 758);
+            this.groupBox1.Size = new System.Drawing.Size(518, 763);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
+            // 
+            // btnChon
+            // 
+            this.btnChon.Location = new System.Drawing.Point(263, 561);
+            this.btnChon.Name = "btnChon";
+            this.btnChon.Size = new System.Drawing.Size(75, 35);
+            this.btnChon.TabIndex = 14;
+            this.btnChon.Text = "Chọn";
+            this.btnChon.UseVisualStyleBackColor = true;
+            this.btnChon.Click += new System.EventHandler(this.btnChon_Click);
+            // 
+            // ptbPreview
+            // 
+            this.ptbPreview.Location = new System.Drawing.Point(156, 561);
+            this.ptbPreview.Name = "ptbPreview";
+            this.ptbPreview.Size = new System.Drawing.Size(100, 100);
+            this.ptbPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbPreview.TabIndex = 13;
+            this.ptbPreview.TabStop = false;
             // 
             // cbxLoai
             // 
@@ -289,17 +310,6 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // dtgvSanPham
-            // 
-            this.dtgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvSanPham.Location = new System.Drawing.Point(578, 132);
-            this.dtgvSanPham.Margin = new System.Windows.Forms.Padding(4);
-            this.dtgvSanPham.Name = "dtgvSanPham";
-            this.dtgvSanPham.RowHeadersWidth = 51;
-            this.dtgvSanPham.Size = new System.Drawing.Size(755, 711);
-            this.dtgvSanPham.TabIndex = 11;
-            this.dtgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPham_CellClick);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -311,30 +321,24 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.label2.TabIndex = 2;
             this.label2.Text = "Ảnh:";
             // 
-            // ptbPreview
+            // dtgvSanPham
             // 
-            this.ptbPreview.Location = new System.Drawing.Point(156, 561);
-            this.ptbPreview.Name = "ptbPreview";
-            this.ptbPreview.Size = new System.Drawing.Size(100, 100);
-            this.ptbPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbPreview.TabIndex = 13;
-            this.ptbPreview.TabStop = false;
-            // 
-            // btnChon
-            // 
-            this.btnChon.Location = new System.Drawing.Point(263, 561);
-            this.btnChon.Name = "btnChon";
-            this.btnChon.Size = new System.Drawing.Size(75, 35);
-            this.btnChon.TabIndex = 14;
-            this.btnChon.Text = "Chọn";
-            this.btnChon.UseVisualStyleBackColor = true;
-            this.btnChon.Click += new System.EventHandler(this.btnChon_Click);
+            this.dtgvSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvSanPham.Location = new System.Drawing.Point(568, 68);
+            this.dtgvSanPham.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgvSanPham.Name = "dtgvSanPham";
+            this.dtgvSanPham.RowHeadersWidth = 51;
+            this.dtgvSanPham.Size = new System.Drawing.Size(755, 716);
+            this.dtgvSanPham.TabIndex = 11;
+            this.dtgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPham_CellClick);
             // 
             // QuanLySanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1346, 1061);
+            this.ClientSize = new System.Drawing.Size(1346, 794);
             this.Controls.Add(this.dtgvSanPham);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -348,8 +352,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             ((System.ComponentModel.ISupportInitialize)(this.qLNhaHangDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvSanPham)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPreview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvSanPham)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

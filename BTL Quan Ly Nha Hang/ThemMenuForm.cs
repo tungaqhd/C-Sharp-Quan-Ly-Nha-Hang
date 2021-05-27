@@ -18,7 +18,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         List<int> dsMenuEdit = new List<int>();
 
         int selectedRowSanPham = 0;
-        int selectedRowMenu= 0;
+        int selectedRowMenu = 0;
         public bool isEditing = false;
         public int editId = -1;
         public string tenMenu = "";
@@ -30,10 +30,10 @@ namespace BTL_Quan_Ly_Nha_Hang
         void captNhatMenu()
         {
             List<SanPham> dsSp = new List<SanPham>();
-            foreach(int ma in dsMenu)
+            foreach (int ma in dsMenu)
             {
                 SanPham rs = db.SanPhams.Where(s => s.ma_sp == ma).FirstOrDefault();
-                if(rs != null)
+                if (rs != null)
                 {
                     dsSp.Add(rs);
                 }
@@ -50,9 +50,9 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void ThemMenuForm_Load(object sender, EventArgs e)
         {
-            using(NhaHangEntities db = new NhaHangEntities())
+            using (NhaHangEntities db = new NhaHangEntities())
             {
-                var dsSp = (from sp in db.SanPhams select new {ma_sp = sp.ma_sp, ten_sp = sp.ten_sp, mo_ta = sp.mo_ta, so_luong = sp.so_luong, don_gia = sp.don_gia, loai = sp.loai, anh = sp.anh}).ToList();
+                var dsSp = (from sp in db.SanPhams select new { ma_sp = sp.ma_sp, ten_sp = sp.ten_sp, mo_ta = sp.mo_ta, so_luong = sp.so_luong, don_gia = sp.don_gia, loai = sp.loai, anh = sp.anh }).ToList();
                 dtgvSanPham.DataSource = dsSp;
                 ((DataGridViewImageColumn)dtgvSanPham.Columns[6]).ImageLayout = DataGridViewImageCellLayout.Stretch;
                 dtgvSanPham.Columns[0].HeaderText = "Mã sản phẩm";
@@ -104,7 +104,12 @@ namespace BTL_Quan_Ly_Nha_Hang
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string ten = tbxTen.Text;
-            if(isEditing)
+            if (ten == "")
+            {
+                MessageBox.Show("Tên menu không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (isEditing)
             {
                 Menu menu = db.Menus.Find(editId);
                 menu.ten_menu = tbxTen.Text;
@@ -127,7 +132,6 @@ namespace BTL_Quan_Ly_Nha_Hang
                 }
             }
             db.SaveChanges();
-
         }
     }
 }

@@ -5,22 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bbdabcff13d44eb095aa07ab6f3b4a70" Name="Diagram1" ZoomLevel="83">
-        <EntityTypeShape EntityType="NhaHangModel.Ban" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="NhaHangModel.Ban" Width="1.5" PointX="0.75" PointY="5" />
         <EntityTypeShape EntityType="NhaHangModel.ChiTietHoaDon" Width="1.5" PointX="5.25" PointY="1.375" />
         <EntityTypeShape EntityType="NhaHangModel.ChiTietMenu" Width="1.5" PointX="5.25" PointY="5.5" />
         <EntityTypeShape EntityType="NhaHangModel.HoaDon" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="NhaHangModel.KhuyenMai" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="NhaHangModel.KhuyenMai" Width="1.5" PointX="0.75" PointY="7.5" />
         <EntityTypeShape EntityType="NhaHangModel.Menu" Width="1.5" PointX="3" PointY="8.625" />
-        <EntityTypeShape EntityType="NhaHangModel.NhanVien" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="NhaHangModel.NhanVien" Width="1.5" PointX="0.75" PointY="1.25" />
         <EntityTypeShape EntityType="NhaHangModel.SanPham" Width="1.5" PointX="3" PointY="5.125" />
-        <EntityTypeShape EntityType="NhaHangModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" />
-        <AssociationConnector Association="NhaHangModel.pk_ban" />
+        <AssociationConnector Association="NhaHangModel.fk_ban" />
         <AssociationConnector Association="NhaHangModel.fk_hd" />
         <AssociationConnector Association="NhaHangModel.fk_sp" />
-        <AssociationConnector Association="NhaHangModel.ctmn_mn" />
-        <AssociationConnector Association="NhaHangModel.ctmn_sp" />
+        <AssociationConnector Association="NhaHangModel.fk_ctmn_mn" />
+        <AssociationConnector Association="NhaHangModel.fk_ctmn_sp" />
         <AssociationConnector Association="NhaHangModel.fk_km" />
-        <AssociationConnector Association="NhaHangModel.pk_nv" />
+        <AssociationConnector Association="NhaHangModel.fk_nv" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

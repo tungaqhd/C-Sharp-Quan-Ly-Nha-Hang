@@ -17,6 +17,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         Ban ban;
         public string maGiamGia;
         NhaHangEntities db = new NhaHangEntities();
+        KhuyenMai km;
         public ThanhToanForm()
         {
             InitializeComponent();
@@ -24,6 +25,19 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void ThanhToanForm_Load(object sender, EventArgs e)
         {
+            using (NhaHangEntities db = new NhaHangEntities())
+            {
+                km = db.KhuyenMais.Find(maGiamGia);
+                if (km != null)
+                {
+                    lblGiamGia.Text = km.tien_giam + " vnđ";
+                }
+                else
+                {
+                    lblGiamGia.Text = "0 vnđ";
+                }
+            }
+
             ban = db.Bans.Where(b => b.ma_ban == maBan).FirstOrDefault();
             lbltenBan.Text = ban.ten_ban;
 
@@ -54,18 +68,24 @@ namespace BTL_Quan_Ly_Nha_Hang
             {
                 tongTien += (int)tt.tong;
             }
-            lblTongTien.Text = tongTien + "";
+            lblTongTien.Text = tongTien + " vnđ";
+            int thanhToan = km != null ? tongTien - (int)km.tien_giam : tongTien;
+            lblThanhToan.Text = thanhToan + " vnđ";
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             ban.trang_thai = 1;
             HoaDon hd = db.HoaDons.Where(h => h.ma_hd == maHD).FirstOrDefault();
+            if (km != null)
+            {
+                hd.ma_km = km.ma_km;
+            }
             hd.trang_thai_hd = 1;
             db.SaveChanges();
             this.DialogResult = DialogResult.OK;
             this.Close();
-            
+
         }
     }
 }

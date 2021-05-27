@@ -74,19 +74,30 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string ten = tbxTen.Text;
-            string moTa = tbxMoTa.Text;
-            int soLuong = Convert.ToInt32(tbxSoLuong.Text);
-            int donGia = Convert.ToInt32(tbxDonGia.Text);
-            string loai = cbxLoai.Text;
-
-            using (NhaHangEntities db = new NhaHangEntities())
+            try
             {
-                db.SanPhams.Add(new SanPham() { ten_sp = ten, mo_ta = moTa, so_luong = soLuong, don_gia = donGia, loai = loai });
-                db.SaveChanges();
-            }
+                string ten = tbxTen.Text;
+                string moTa = tbxMoTa.Text;
+                if (ten == "" || moTa == "")
+                {
+                    throw new Exception("Thông tin sản phẩm không hợp lệ");
+                }
+                int soLuong = Convert.ToInt32(tbxSoLuong.Text);
+                int donGia = Convert.ToInt32(tbxDonGia.Text);
+                string loai = cbxLoai.Text;
 
-            updateData();
+                using (NhaHangEntities db = new NhaHangEntities())
+                {
+                    db.SanPhams.Add(new SanPham() { ten_sp = ten, mo_ta = moTa, so_luong = soLuong, don_gia = donGia, loai = loai });
+                    db.SaveChanges();
+                }
+
+                updateData();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dtgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -144,49 +155,60 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            int maSp;
             try
             {
-                maSp = Convert.ToInt32(tbxMa.Text);
+                string ten = tbxTen.Text;
+                string moTa = tbxMoTa.Text;
+                if (ten == "" || moTa == "")
+                {
+                    throw new Exception("Thông tin sản phẩm không hợp lệ");
+                }
+                int maSp = Convert.ToInt32(tbxMa.Text);
+                using (NhaHangEntities db = new NhaHangEntities())
+                {
+                    SanPham sp = db.SanPhams.Find(maSp);
+
+                    sp.ten_sp = ten;
+                    sp.mo_ta = moTa;
+                    sp.so_luong = Convert.ToInt32(tbxSoLuong.Text);
+                    sp.don_gia = Convert.ToInt32(tbxDonGia.Text);
+                    sp.loai = cbxLoai.Text;
+
+                    if (ptbPreview.Image != null)
+                    {
+                        sp.anh = ConvertImageToBinary(ptbPreview.Image);
+                    }
+
+                    db.SaveChanges();
+                }
+
+                updateData();
+                resetForm();
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
-            using (NhaHangEntities db = new NhaHangEntities())
-            {
-                SanPham sp = db.SanPhams.Find(maSp);
-
-                sp.ten_sp = tbxTen.Text;
-                sp.mo_ta = tbxMoTa.Text;
-                sp.so_luong = Convert.ToInt32(tbxSoLuong.Text);
-                sp.don_gia = Convert.ToInt32(tbxDonGia.Text);
-                sp.loai = cbxLoai.Text;
-
-                if (ptbPreview.Image != null)
-                {
-                    sp.anh = ConvertImageToBinary(ptbPreview.Image);
-                }
-
-                db.SaveChanges();
-            }
-
-            updateData();
-            resetForm();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            int maSp = Convert.ToInt32(tbxMa.Text);
-            using (NhaHangEntities db = new NhaHangEntities())
+            try
             {
-                SanPham sp = db.SanPhams.Find(maSp);
-                db.SanPhams.Remove(sp);
-                db.SaveChanges();
-            }
+                int maSp = Convert.ToInt32(tbxMa.Text);
+                using (NhaHangEntities db = new NhaHangEntities())
+                {
+                    SanPham sp = db.SanPhams.Find(maSp);
+                    db.SanPhams.Remove(sp);
+                    db.SaveChanges();
+                }
 
-            updateData();
+                updateData();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnChon_Click(object sender, EventArgs e)

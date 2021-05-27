@@ -30,10 +30,10 @@ namespace BTL_Quan_Ly_Nha_Hang
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyPanel));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.trangChủToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +46,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.quảnLýMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.khuyếnMãiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
@@ -54,8 +56,6 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.label2 = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.btnXuat = new System.Windows.Forms.Button();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.khuyếnMãiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).BeginInit();
             this.SuspendLayout();
@@ -123,7 +123,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             this.thốngKêKhoToolStripMenuItem.Name = "thốngKêKhoToolStripMenuItem";
             this.thốngKêKhoToolStripMenuItem.Size = new System.Drawing.Size(236, 30);
-            this.thốngKêKhoToolStripMenuItem.Text = "Thống kê kho";
+            this.thốngKêKhoToolStripMenuItem.Text = "Quản lý kho";
+            this.thốngKêKhoToolStripMenuItem.Click += new System.EventHandler(this.thốngKêKhoToolStripMenuItem_Click);
             // 
             // menuToolStripMenuItem
             // 
@@ -166,27 +167,44 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.quảnLýHóaĐơnToolStripMenuItem.Text = "Quản lý hóa đơn";
             this.quảnLýHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.quảnLýHóaĐơnToolStripMenuItem_Click);
             // 
+            // khuyếnMãiToolStripMenuItem
+            // 
+            this.khuyếnMãiToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("khuyếnMãiToolStripMenuItem.Image")));
+            this.khuyếnMãiToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.khuyếnMãiToolStripMenuItem.Name = "khuyếnMãiToolStripMenuItem";
+            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(147, 29);
+            this.khuyếnMãiToolStripMenuItem.Text = "Khuyến mãi";
+            this.khuyếnMãiToolStripMenuItem.Click += new System.EventHandler(this.khuyếnMãiToolStripMenuItem_Click);
+            // 
+            // đăngXuấtToolStripMenuItem
+            // 
+            this.đăngXuấtToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("đăngXuấtToolStripMenuItem.Image")));
+            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(135, 29);
+            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
+            // 
             // chartDoanhThu
             // 
             this.chartDoanhThu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend1);
             this.chartDoanhThu.Location = new System.Drawing.Point(23, 201);
             this.chartDoanhThu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chartDoanhThu.Name = "chartDoanhThu";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Doanh thu";
-            this.chartDoanhThu.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Doanh thu";
+            this.chartDoanhThu.Series.Add(series1);
             this.chartDoanhThu.Size = new System.Drawing.Size(1469, 557);
             this.chartDoanhThu.TabIndex = 1;
             this.chartDoanhThu.Text = "chart1";
-            title3.Name = "Biểu đồ doanh thu";
-            this.chartDoanhThu.Titles.Add(title3);
+            title1.Name = "Biểu đồ doanh thu";
+            this.chartDoanhThu.Titles.Add(title1);
             // 
             // dtpFrom
             // 
@@ -266,22 +284,6 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.btnXuat.Text = "Xuất báo cáo";
             this.btnXuat.UseVisualStyleBackColor = true;
             this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
-            // 
-            // đăngXuấtToolStripMenuItem
-            // 
-            this.đăngXuấtToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("đăngXuấtToolStripMenuItem.Image")));
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(135, 29);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
-            // 
-            // khuyếnMãiToolStripMenuItem
-            // 
-            this.khuyếnMãiToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("khuyếnMãiToolStripMenuItem.Image")));
-            this.khuyếnMãiToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.khuyếnMãiToolStripMenuItem.Name = "khuyếnMãiToolStripMenuItem";
-            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(147, 29);
-            this.khuyếnMãiToolStripMenuItem.Text = "Khuyến mãi";
-            this.khuyếnMãiToolStripMenuItem.Click += new System.EventHandler(this.khuyếnMãiToolStripMenuItem_Click);
             // 
             // QuanLyPanel
             // 

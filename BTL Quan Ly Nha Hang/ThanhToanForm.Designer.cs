@@ -38,7 +38,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblGiamGia = new System.Windows.Forms.Label();
-            this.btnIn = new System.Windows.Forms.Button();
+            this.lblThanhToan = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiTiet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,9 +67,10 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // dtgvChiTiet
             // 
+            this.dtgvChiTiet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvChiTiet.Location = new System.Drawing.Point(13, 165);
-            this.dtgvChiTiet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgvChiTiet.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvChiTiet.Name = "dtgvChiTiet";
             this.dtgvChiTiet.Size = new System.Drawing.Size(511, 431);
             this.dtgvChiTiet.TabIndex = 2;
@@ -77,7 +79,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 619);
+            this.label3.Location = new System.Drawing.Point(34, 619);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 22);
@@ -99,8 +101,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             this.btnThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.Image")));
             this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThanhToan.Location = new System.Drawing.Point(365, 726);
-            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThanhToan.Location = new System.Drawing.Point(192, 737);
+            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(4);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(159, 38);
             this.btnThanhToan.TabIndex = 5;
@@ -112,7 +114,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 673);
+            this.label2.Location = new System.Drawing.Point(39, 653);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 22);
@@ -123,31 +125,42 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             this.lblGiamGia.AutoSize = true;
             this.lblGiamGia.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGiamGia.Location = new System.Drawing.Point(146, 673);
+            this.lblGiamGia.Location = new System.Drawing.Point(146, 653);
             this.lblGiamGia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGiamGia.Name = "lblGiamGia";
             this.lblGiamGia.Size = new System.Drawing.Size(19, 22);
             this.lblGiamGia.TabIndex = 4;
             this.lblGiamGia.Text = "0";
             // 
-            // btnIn
+            // lblThanhToan
             // 
-            this.btnIn.Image = ((System.Drawing.Image)(resources.GetObject("btnIn.Image")));
-            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIn.Location = new System.Drawing.Point(13, 726);
-            this.btnIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(90, 38);
-            this.btnIn.TabIndex = 6;
-            this.btnIn.Text = "In";
-            this.btnIn.UseVisualStyleBackColor = true;
+            this.lblThanhToan.AutoSize = true;
+            this.lblThanhToan.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThanhToan.Location = new System.Drawing.Point(146, 686);
+            this.lblThanhToan.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblThanhToan.Name = "lblThanhToan";
+            this.lblThanhToan.Size = new System.Drawing.Size(19, 22);
+            this.lblThanhToan.TabIndex = 8;
+            this.lblThanhToan.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(18, 686);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 22);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Thanh toán:";
             // 
             // ThanhToanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 788);
-            this.Controls.Add(this.btnIn);
+            this.Controls.Add(this.lblThanhToan);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnThanhToan);
             this.Controls.Add(this.lblGiamGia);
             this.Controls.Add(this.lblTongTien);
@@ -157,7 +170,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.lbltenBan);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ThanhToanForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thanh toán";
@@ -178,6 +191,7 @@ namespace BTL_Quan_Ly_Nha_Hang
         private System.Windows.Forms.Button btnThanhToan;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblGiamGia;
-        private System.Windows.Forms.Button btnIn;
+        private System.Windows.Forms.Label lblThanhToan;
+        private System.Windows.Forms.Label label5;
     }
 }

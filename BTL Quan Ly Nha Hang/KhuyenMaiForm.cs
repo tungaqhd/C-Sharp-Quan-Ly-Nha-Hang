@@ -42,6 +42,10 @@ namespace BTL_Quan_Ly_Nha_Hang
             {
                 string maKm = txtMaKM.Text;
                 string tenKm = txtTen.Text;
+                if(maKm == "" || tenKm == "")
+                {
+                    throw new Exception("Khuyến mãi không hợp lệ");
+                }
                 int toiThieu = Convert.ToInt32(txtToiThieu.Text);
                 int tienGiam = Convert.ToInt32(txtTienGiam.Text);
 
@@ -65,6 +69,10 @@ namespace BTL_Quan_Ly_Nha_Hang
             {
                 string maKm = txtMaKM.Text;
                 string tenKm = txtTen.Text;
+                if (maKm == "" || tenKm == "")
+                {
+                    throw new Exception("Khuyến mãi không hợp lệ");
+                }
                 int toiThieu = Convert.ToInt32(txtToiThieu.Text);
                 int tienGiam = Convert.ToInt32(txtTienGiam.Text);
 
