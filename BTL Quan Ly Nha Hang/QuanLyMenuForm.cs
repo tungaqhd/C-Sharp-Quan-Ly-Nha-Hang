@@ -21,7 +21,12 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void QuanLyMenuForm_Load(object sender, EventArgs e)
         {
-            var ds = (from mn in db.Menus select new { ma_mn = mn.ma_menu, ten_mn = mn.ten_menu}).ToList();
+            HienThi();
+        }
+
+        private void HienThi()
+        {
+            var ds = (from mn in db.Menus select new { ma_mn = mn.ma_menu, ten_mn = mn.ten_menu }).ToList();
             dtgvMenu.DataSource = ds;
             dtgvMenu.Columns[0].HeaderText = "Mã Menu";
             dtgvMenu.Columns[1].HeaderText = "Tên Menu";
@@ -40,7 +45,10 @@ namespace BTL_Quan_Ly_Nha_Hang
                 themMenuForm.isEditing = true;
                 themMenuForm.tenMenu = dtgvMenu.Rows[selected].Cells[1].Value.ToString();
                 themMenuForm.editId = Convert.ToInt32(dtgvMenu.Rows[selected].Cells[0].Value.ToString());
-                themMenuForm.ShowDialog();
+                if (themMenuForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    HienThi();
+                }
             }
             catch (Exception err)
             {
@@ -51,19 +59,26 @@ namespace BTL_Quan_Ly_Nha_Hang
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string name = txtSearch.Text;
-            List<Menu> ds = db.Menus.Where(mn => mn.ten_menu.Contains(name)).ToList();
+            var ds = db.Menus.Where(mn => mn.ten_menu.Contains(name)).Select(mn => new { ma_mn = mn.ma_menu, ten_mn = mn.ten_menu }).ToList();
             dtgvMenu.DataSource = ds;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
+            int maMenu = Convert.ToInt32(dtgvMenu.Rows[selected].Cells[0].Value.ToString());
+            Menu mn = db.Menus.Find(maMenu);
+            db.Menus.Remove(mn);
+            db.SaveChanges();
+            HienThi();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             ThemMenuForm themMenuForm = new ThemMenuForm();
-            themMenuForm.Show();
+            if (themMenuForm.ShowDialog(this) == DialogResult.OK)
+            {
+                HienThi();
+            }
         }
     }
 }

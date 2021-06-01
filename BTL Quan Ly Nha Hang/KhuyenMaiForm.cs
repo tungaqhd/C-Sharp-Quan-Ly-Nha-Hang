@@ -36,26 +36,34 @@ namespace BTL_Quan_Ly_Nha_Hang
             }
         }
 
+        private void ResetForm()
+        {
+            txtMaKM.Text = "";
+            txtTienGiam.Text = "";
+            txtTen.Text = "";
+            txtToiThieu.Text = "";
+        }
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
             {
                 string maKm = txtMaKM.Text;
                 string tenKm = txtTen.Text;
-                if(maKm == "" || tenKm == "")
+                if (maKm == "" || tenKm == "")
                 {
                     throw new Exception("Khuyến mãi không hợp lệ");
                 }
                 int toiThieu = Convert.ToInt32(txtToiThieu.Text);
                 int tienGiam = Convert.ToInt32(txtTienGiam.Text);
 
-                using(NhaHangEntities db = new NhaHangEntities())
+                using (NhaHangEntities db = new NhaHangEntities())
                 {
                     KhuyenMai km = new KhuyenMai() { ma_km = maKm, ten_km = tenKm, yeu_cau = toiThieu, tien_giam = tienGiam };
                     db.KhuyenMais.Add(km);
                     db.SaveChanges();
                 }
                 HienThi();
+                ResetForm();
             }
             catch (Exception err)
             {
@@ -79,7 +87,7 @@ namespace BTL_Quan_Ly_Nha_Hang
                 using (NhaHangEntities db = new NhaHangEntities())
                 {
                     KhuyenMai kf = db.KhuyenMais.Where(k => k.ma_km == maKm).FirstOrDefault();
-                    if(kf == null)
+                    if (kf == null)
                     {
                         throw new Exception("Mã khuyến mãi này không tồn tại!");
                     }
@@ -89,6 +97,7 @@ namespace BTL_Quan_Ly_Nha_Hang
                     db.SaveChanges();
                 }
                 HienThi();
+                ResetForm();
             }
             catch (Exception err)
             {
@@ -126,7 +135,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             try
             {
                 txtMaKM.Text = dtgvKM.Rows[idx].Cells[0].Value.ToString();
-                txtTen.Text = dtgvKM.Rows[idx].Cells[1].Value.ToString(); 
+                txtTen.Text = dtgvKM.Rows[idx].Cells[1].Value.ToString();
                 txtToiThieu.Text = dtgvKM.Rows[idx].Cells[2].Value.ToString();
                 txtTienGiam.Text = dtgvKM.Rows[idx].Cells[3].Value.ToString();
             }

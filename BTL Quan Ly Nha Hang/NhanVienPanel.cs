@@ -358,6 +358,11 @@ namespace BTL_Quan_Ly_Nha_Hang
                         MessageBox.Show("Mã khuyến mãi không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    else if(km.yeu_cau > Convert.ToInt32(txtTongTien.Text))
+                    {
+                        MessageBox.Show("Hóa đơn chưa đạt giá trị tối thiểu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
 

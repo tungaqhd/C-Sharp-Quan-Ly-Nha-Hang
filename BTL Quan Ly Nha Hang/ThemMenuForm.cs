@@ -70,7 +70,6 @@ namespace BTL_Quan_Ly_Nha_Hang
                     foreach (ChiTietMenu mon in dsMon)
                     {
                         dsMenu.Add((int)mon.ma_sp);
-                        dsMenuEdit.Add((int)mon.ma_sp);
                     }
                     captNhatMenu();
                 }
@@ -113,9 +112,9 @@ namespace BTL_Quan_Ly_Nha_Hang
             {
                 Menu menu = db.Menus.Find(editId);
                 menu.ten_menu = tbxTen.Text;
-                var themMenu = dsMenu.Where(sp => !dsMenuEdit.Any(spCu => sp == spCu));
+                db.ChiTietMenus.RemoveRange(db.ChiTietMenus.Where(m => m.ma_menu == menu.ma_menu));
 
-                foreach (int maSp in themMenu)
+                foreach (int maSp in dsMenu)
                 {
                     db.ChiTietMenus.Add(new ChiTietMenu() { ma_menu = menu.ma_menu, ma_sp = maSp });
                 }
@@ -132,6 +131,8 @@ namespace BTL_Quan_Ly_Nha_Hang
                 }
             }
             db.SaveChanges();
+            this.DialogResult = DialogResult.OK;
+            this.Hide();
         }
     }
 }

@@ -72,7 +72,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.txtMaKM.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtMaKM.Name = "txtMaKM";
             this.txtMaKM.Size = new System.Drawing.Size(148, 29);
-            this.txtMaKM.TabIndex = 2;
+            this.txtMaKM.TabIndex = 1;
             // 
             // label2
             // 
@@ -108,7 +108,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.txtToiThieu.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtToiThieu.Name = "txtToiThieu";
             this.txtToiThieu.Size = new System.Drawing.Size(148, 29);
-            this.txtToiThieu.TabIndex = 2;
+            this.txtToiThieu.TabIndex = 3;
             // 
             // label4
             // 
@@ -126,7 +126,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.txtTienGiam.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtTienGiam.Name = "txtTienGiam";
             this.txtTienGiam.Size = new System.Drawing.Size(148, 29);
-            this.txtTienGiam.TabIndex = 2;
+            this.txtTienGiam.TabIndex = 4;
             // 
             // btnThem
             // 
@@ -135,7 +135,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.btnThem.Location = new System.Drawing.Point(182, 110);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(112, 30);
-            this.btnThem.TabIndex = 3;
+            this.btnThem.TabIndex = 5;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -147,7 +147,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.btnSua.Location = new System.Drawing.Point(182, 146);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(112, 30);
-            this.btnSua.TabIndex = 3;
+            this.btnSua.TabIndex = 6;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -159,7 +159,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.btnXoa.Location = new System.Drawing.Point(182, 180);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(112, 30);
-            this.btnXoa.TabIndex = 3;
+            this.btnXoa.TabIndex = 7;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);

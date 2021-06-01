@@ -85,7 +85,6 @@ namespace BTL_Quan_Ly_Nha_Hang
             db.SaveChanges();
             this.DialogResult = DialogResult.OK;
             this.Close();
-
         }
     }
 }
