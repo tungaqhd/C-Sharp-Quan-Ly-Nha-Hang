@@ -18,12 +18,12 @@ namespace BTL_Quan_Ly_Nha_Hang
         {
             InitializeComponent();
         }
-        public void HienThi()
+        public void HienThi(DateTime from, DateTime to)
         {
             dtgvHoaDon.DataSource = null;
             using(NhaHangEntities db = new NhaHangEntities())
             {
-                dtgvHoaDon.DataSource = db.HoaDons.Select(h => new
+                dtgvHoaDon.DataSource = db.HoaDons.Where(h => h.ngay >= from && h.ngay <= to).Select(h => new
                 {
                     h.ma_hd,
                     h.NhanVien.ten_nv,
@@ -43,8 +43,11 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void Quanlyhoadon_Load(object sender, EventArgs e)
         {
-            //hienthidshoadon();
-            HienThi();
+            DateTime to = DateTime.Now;
+            DateTime from = DateTime.Now.AddDays(-14);
+            dtpFrom.Value = from;
+            dtpTo.Value = to;
+            HienThi(from, to);
         }
 
         private void dataGridViewhoadon_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -84,13 +87,14 @@ namespace BTL_Quan_Ly_Nha_Hang
                 dtgvChiTiet.Columns[2].HeaderText = "Đơn giá";
                 dtgvChiTiet.Columns[3].HeaderText = "Số lượng";
                 dtgvChiTiet.Columns[4].HeaderText = "Thành tiền";
-
-                //foreach (var tt in ct)
-                //{
-                //    tongTien += (int)tt.tong;
-                //}
-                //txtTongTien.Text = tongTien + "";
             }
+        }
+
+        private void btnLoc_Click(object sender, EventArgs e)
+        {
+            DateTime from = dtpFrom.Value;
+            DateTime to = dtpTo.Value;
+            HienThi(from, to);
         }
     }
 }

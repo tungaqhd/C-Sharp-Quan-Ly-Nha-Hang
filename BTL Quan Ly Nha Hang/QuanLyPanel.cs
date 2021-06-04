@@ -40,14 +40,10 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void quảnLýNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            QuanLyThongTinNhanVien quanLyThongTinNhanVien = new QuanLyThongTinNhanVien();
-            quanLyThongTinNhanVien.ShowDialog();
         }
 
         private void quảnLýHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Quanlyhoadon quanlyhoadon = new Quanlyhoadon();
-            quanlyhoadon.ShowDialog();
         }
 
         private void QuanLyPanel_Load(object sender, EventArgs e)
@@ -183,6 +179,24 @@ namespace BTL_Quan_Ly_Nha_Hang
         {
             Quanlykho quanlykho = new Quanlykho();
             quanlykho.ShowDialog();
+        }
+
+        private void hóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Quanlyhoadon quanlyhoadon = new Quanlyhoadon();
+            quanlyhoadon.ShowDialog();
+        }
+
+        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuanLyThongTinNhanVien quanLyThongTinNhanVien = new QuanLyThongTinNhanVien();
+            quanLyThongTinNhanVien.ShowDialog();
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Quanlykhachhang quanlykhachhang = new Quanlykhachhang();
+            quanlykhachhang.ShowDialog();
         }
     }
 }

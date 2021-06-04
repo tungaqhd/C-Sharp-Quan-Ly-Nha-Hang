@@ -74,6 +74,9 @@
     <Compile Include="HoaDon.cs">
       <DependentUpon>ModelNhaHang.tt</DependentUpon>
     </Compile>
+    <Compile Include="KhachHang.cs">
+      <DependentUpon>ModelNhaHang.tt</DependentUpon>
+    </Compile>
     <Compile Include="KhuyenMai.cs">
       <DependentUpon>ModelNhaHang.tt</DependentUpon>
     </Compile>
@@ -128,6 +131,12 @@
     </Compile>
     <Compile Include="Quanlyhoadon.designer.cs">
       <DependentUpon>Quanlyhoadon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quanlykhachhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quanlykhachhang.Designer.cs">
+      <DependentUpon>Quanlykhachhang.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyMenuForm.cs">
       <SubType>Form</SubType>
@@ -197,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Quanlyhoadon.resx">
       <DependentUpon>Quanlyhoadon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quanlykhachhang.resx">
+      <DependentUpon>Quanlykhachhang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyMenuForm.resx">
       <DependentUpon>QuanLyMenuForm.cs</DependentUpon>

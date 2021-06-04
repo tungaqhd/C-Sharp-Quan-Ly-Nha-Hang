@@ -200,6 +200,7 @@ namespace BTL_Quan_Ly_Nha_Hang
                 }
                 else
                 {
+                    txtTongTien.Text = "";
                     txtMaHD.Text = "";
                     dtgvChiTietHD.DataSource = null;
                 }

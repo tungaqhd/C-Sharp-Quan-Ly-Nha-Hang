@@ -39,7 +39,17 @@
           <Property Name="ma_ban" Type="int" />
           <Property Name="ngay" Type="date" />
           <Property Name="trang_thai_hd" Type="int" />
+          <Property Name="ma_kh" Type="int" />
           <Property Name="ma_km" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="ma_kh" />
+          </Key>
+          <Property Name="ma_kh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ho_ten" Type="nvarchar" MaxLength="60" />
+          <Property Name="sdt" Type="char" MaxLength="10" />
+          <Property Name="diem" Type="int" />
         </EntityType>
         <EntityType Name="KhuyenMai">
           <Key>
@@ -136,6 +146,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_kh">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="ma_kh" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="ma_kh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_km">
           <End Role="KhuyenMai" Type="Self.KhuyenMai" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -183,6 +207,7 @@
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietMenu" EntityType="Self.ChiTietMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KhuyenMai" EntityType="Self.KhuyenMai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
@@ -202,6 +227,10 @@
           <AssociationSet Name="fk_hd" Association="Self.fk_hd">
             <End Role="HoaDon" EntitySet="HoaDon" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="fk_kh" Association="Self.fk_kh">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
           <AssociationSet Name="fk_km" Association="Self.fk_km">
             <End Role="KhuyenMai" EntitySet="KhuyenMai" />
@@ -225,6 +254,7 @@
           <EntitySet Name="ChiTietHoaDons" EntityType="NhaHangModel.ChiTietHoaDon" />
           <EntitySet Name="ChiTietMenus" EntityType="NhaHangModel.ChiTietMenu" />
           <EntitySet Name="HoaDons" EntityType="NhaHangModel.HoaDon" />
+          <EntitySet Name="KhachHangs" EntityType="NhaHangModel.KhachHang" />
           <EntitySet Name="KhuyenMais" EntityType="NhaHangModel.KhuyenMai" />
           <EntitySet Name="Menus" EntityType="NhaHangModel.Menu" />
           <EntitySet Name="NhanViens" EntityType="NhaHangModel.NhanVien" />
@@ -248,6 +278,10 @@
           <AssociationSet Name="fk_ctmn_sp" Association="NhaHangModel.fk_ctmn_sp">
             <End Role="SanPham" EntitySet="SanPhams" />
             <End Role="ChiTietMenu" EntitySet="ChiTietMenus" />
+          </AssociationSet>
+          <AssociationSet Name="fk_kh" Association="NhaHangModel.fk_kh">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
           </AssociationSet>
           <AssociationSet Name="fk_km" Association="NhaHangModel.fk_km">
             <End Role="KhuyenMai" EntitySet="KhuyenMais" />
@@ -297,11 +331,23 @@
           <Property Name="ma_ban" Type="Int32" />
           <Property Name="ngay" Type="DateTime" Precision="0" />
           <Property Name="trang_thai_hd" Type="Int32" />
+          <Property Name="ma_kh" Type="Int32" />
           <Property Name="ma_km" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Ban" Relationship="NhaHangModel.fk_ban" FromRole="HoaDon" ToRole="Ban" />
           <NavigationProperty Name="ChiTietHoaDons" Relationship="NhaHangModel.fk_hd" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
+          <NavigationProperty Name="KhachHang" Relationship="NhaHangModel.fk_kh" FromRole="HoaDon" ToRole="KhachHang" />
           <NavigationProperty Name="KhuyenMai" Relationship="NhaHangModel.fk_km" FromRole="HoaDon" ToRole="KhuyenMai" />
           <NavigationProperty Name="NhanVien" Relationship="NhaHangModel.fk_nv" FromRole="HoaDon" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="ma_kh" />
+          </Key>
+          <Property Name="ma_kh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ho_ten" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="sdt" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="diem" Type="Int32" />
+          <NavigationProperty Name="HoaDons" Relationship="NhaHangModel.fk_kh" FromRole="KhachHang" ToRole="HoaDon" />
         </EntityType>
         <EntityType Name="KhuyenMai">
           <Key>
@@ -417,6 +463,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_kh">
+          <End Type="NhaHangModel.KhachHang" Role="KhachHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NhaHangModel.HoaDon" Role="HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="ma_kh" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="ma_kh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_km">
           <End Type="NhaHangModel.KhuyenMai" Role="KhuyenMai" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -483,11 +543,22 @@
             <EntityTypeMapping TypeName="NhaHangModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
                 <ScalarProperty Name="ma_km" ColumnName="ma_km" />
+                <ScalarProperty Name="ma_kh" ColumnName="ma_kh" />
                 <ScalarProperty Name="trang_thai_hd" ColumnName="trang_thai_hd" />
                 <ScalarProperty Name="ngay" ColumnName="ngay" />
                 <ScalarProperty Name="ma_ban" ColumnName="ma_ban" />
                 <ScalarProperty Name="ma_nv" ColumnName="ma_nv" />
                 <ScalarProperty Name="ma_hd" ColumnName="ma_hd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="NhaHangModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="diem" ColumnName="diem" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+                <ScalarProperty Name="ho_ten" ColumnName="ho_ten" />
+                <ScalarProperty Name="ma_kh" ColumnName="ma_kh" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

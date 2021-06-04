@@ -14,10 +14,12 @@ namespace BTL_Quan_Ly_Nha_Hang
     {
         public int maBan;
         public int maHD;
+        int tongTien;
         Ban ban;
         public string maGiamGia;
         NhaHangEntities db = new NhaHangEntities();
         KhuyenMai km;
+        KhachHang kh;
         public ThanhToanForm()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             ban = db.Bans.Where(b => b.ma_ban == maBan).FirstOrDefault();
             lbltenBan.Text = ban.ten_ban;
 
-            int tongTien = 0;
+            tongTien = 0;
             var ct = (from c in db.ChiTietHoaDons
                       join s in db.SanPhams on c.ma_sp equals s.ma_sp
                       where c.ma_hd == maHD
@@ -75,16 +77,80 @@ namespace BTL_Quan_Ly_Nha_Hang
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            ban.trang_thai = 1;
-            HoaDon hd = db.HoaDons.Where(h => h.ma_hd == maHD).FirstOrDefault();
-            if (km != null)
+            try
             {
-                hd.ma_km = km.ma_km;
+                if (txtSDT.Text == "" || txtHoTen.Text == "")
+                {
+                    throw new Exception("Vui lòng nhập thông tin khách hàng");
+                }
+                int diem = Convert.ToInt32(txtDiem.Text);
+                int diemDung = txtDiemSD.Text == "" ? 0 : Convert.ToInt32(txtDiemSD.Text);
+                if(diemDung > diem)
+                {
+                    throw new FormatException();
+                }
+
+                ban.trang_thai = 1;
+                HoaDon hd = db.HoaDons.Where(h => h.ma_hd == maHD).FirstOrDefault();
+                if (km != null)
+                {
+                    hd.ma_km = km.ma_km;
+                }
+                hd.trang_thai_hd = 1;
+                
+                if (kh == null)
+                {
+                    string hoTen = txtHoTen.Text;
+                    string sdt = txtSDT.Text;
+                    kh = new KhachHang() { ho_ten = hoTen, sdt = sdt, diem = 0 };
+                    db.KhachHangs.Add(kh);
+                }
+
+                tongTien -= diemDung;
+                kh.diem -= diemDung;
+                kh.diem += (int)(tongTien * 0.02);
+                
+                hd.ma_kh = kh.ma_kh;
+                db.SaveChanges();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            hd.trang_thai_hd = 1;
-            db.SaveChanges();
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            catch(FormatException)
+            {
+                MessageBox.Show("Điểm không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtSDT_TextChanged(object sender, EventArgs e)
+        {
+            string sdt = txtSDT.Text;
+            kh = db.KhachHangs.Where(k => k.sdt == sdt).FirstOrDefault();
+            if (kh != null)
+            {
+                txtHoTen.Text = kh.ho_ten;
+                txtDiem.Text = kh.diem + "";
+                txtHoTen.Enabled = false;
+            }
+        }
+
+        private void txtDiemSD_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int diem = txtDiemSD.Text != "" ? Convert.ToInt32(txtDiemSD.Text) : 0;
+                int tienKm = km != null ? (int)km.tien_giam : 0;
+                lblDiem.Text = diem + "";
+
+                lblThanhToan.Text = tongTien - tienKm - diem + "";
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Điểm không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

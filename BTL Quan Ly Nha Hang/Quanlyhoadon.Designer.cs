@@ -29,10 +29,16 @@ namespace BTL_Quan_Ly_Nha_Hang
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Quanlyhoadon));
             this.dtgvHoaDon = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgvChiTiet = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnLoc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiTiet)).BeginInit();
             this.SuspendLayout();
@@ -42,12 +48,13 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.dtgvHoaDon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgvHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dtgvHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvHoaDon.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvHoaDon.Location = new System.Drawing.Point(27, 107);
+            this.dtgvHoaDon.Location = new System.Drawing.Point(12, 167);
             this.dtgvHoaDon.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.dtgvHoaDon.Name = "dtgvHoaDon";
-            this.dtgvHoaDon.Size = new System.Drawing.Size(660, 646);
+            this.dtgvHoaDon.Size = new System.Drawing.Size(640, 587);
             this.dtgvHoaDon.TabIndex = 0;
             this.dtgvHoaDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvHoaDon_CellClick);
             this.dtgvHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewhoadon_CellContentClick);
@@ -55,7 +62,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 76);
+            this.label1.Location = new System.Drawing.Point(7, 136);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(200, 26);
@@ -66,29 +73,83 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             this.dtgvChiTiet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgvChiTiet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dtgvChiTiet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvChiTiet.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgvChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvChiTiet.Location = new System.Drawing.Point(817, 107);
+            this.dtgvChiTiet.Location = new System.Drawing.Point(748, 167);
             this.dtgvChiTiet.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.dtgvChiTiet.Name = "dtgvChiTiet";
-            this.dtgvChiTiet.Size = new System.Drawing.Size(617, 646);
+            this.dtgvChiTiet.Size = new System.Drawing.Size(686, 587);
             this.dtgvChiTiet.TabIndex = 2;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(812, 76);
+            this.label2.Location = new System.Drawing.Point(743, 136);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 26);
             this.label2.TabIndex = 3;
             this.label2.Text = "Chi tiết hóa đơn";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 11);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 26);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Từ:";
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Location = new System.Drawing.Point(12, 40);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(319, 33);
+            this.dtpFrom.TabIndex = 5;
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Location = new System.Drawing.Point(337, 40);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(316, 33);
+            this.dtpTo.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(332, 11);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 26);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Đến:";
+            // 
+            // btnLoc
+            // 
+            this.btnLoc.Image = ((System.Drawing.Image)(resources.GetObject("btnLoc.Image")));
+            this.btnLoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLoc.Location = new System.Drawing.Point(12, 79);
+            this.btnLoc.Name = "btnLoc";
+            this.btnLoc.Size = new System.Drawing.Size(119, 33);
+            this.btnLoc.TabIndex = 8;
+            this.btnLoc.Text = "Lọc";
+            this.btnLoc.UseVisualStyleBackColor = true;
+            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
+            // 
             // Quanlyhoadon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1449, 767);
+            this.ClientSize = new System.Drawing.Size(1449, 768);
+            this.Controls.Add(this.btnLoc);
+            this.Controls.Add(this.dtpTo);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dtpFrom);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtgvChiTiet);
             this.Controls.Add(this.label1);
@@ -98,6 +159,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Name = "Quanlyhoadon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý hóa đơn";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Quanlyhoadon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHoaDon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiTiet)).EndInit();
@@ -112,5 +174,10 @@ namespace BTL_Quan_Ly_Nha_Hang
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dtgvChiTiet;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnLoc;
     }
 }

@@ -12,27 +12,20 @@ namespace BTL_Quan_Ly_Nha_Hang
     using System;
     using System.Collections.Generic;
     
-    public partial class HoaDon
+    public partial class KhachHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HoaDon()
+        public KhachHang()
         {
-            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+            this.HoaDons = new HashSet<HoaDon>();
         }
     
-        public int ma_hd { get; set; }
-        public Nullable<int> ma_nv { get; set; }
-        public Nullable<int> ma_ban { get; set; }
-        public Nullable<System.DateTime> ngay { get; set; }
-        public Nullable<int> trang_thai_hd { get; set; }
-        public Nullable<int> ma_kh { get; set; }
-        public string ma_km { get; set; }
+        public int ma_kh { get; set; }
+        public string ho_ten { get; set; }
+        public string sdt { get; set; }
+        public Nullable<int> diem { get; set; }
     
-        public virtual Ban Ban { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-        public virtual KhachHang KhachHang { get; set; }
-        public virtual KhuyenMai KhuyenMai { get; set; }
-        public virtual NhanVien NhanVien { get; set; }
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

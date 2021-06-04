@@ -11,6 +11,13 @@ create table NhanVien (
 	chuc_vu varchar(10)
 )
 
+create table KhachHang (
+	ma_kh int not null identity primary key,
+	ho_ten nvarchar(60),
+	sdt char(10) unique,
+	diem int default 0
+)
+
 create table SanPham (
 	ma_sp int not null identity primary key,
 	ten_sp nvarchar(60),
@@ -53,10 +60,12 @@ create table HoaDon (
 	ma_ban int,
 	ngay date,
 	trang_thai_hd int,
+	ma_kh int,
 	ma_km char(10),
 	constraint fk_nv foreign key(ma_nv) references NhanVien(ma_nv) on update cascade on delete cascade,
 	constraint fk_ban foreign key(ma_ban) references Ban(ma_ban) on update cascade on delete cascade,
-	constraint fk_km foreign key(ma_km) references KhuyenMai(ma_km) on update cascade on delete cascade
+	constraint fk_km foreign key(ma_km) references KhuyenMai(ma_km) on update cascade on delete cascade,
+	constraint fk_kh foreign key(ma_kh) references KhachHang(ma_kh) on update cascade on delete cascade
 )
 
 create table ChiTietHoaDon (
@@ -95,3 +104,5 @@ select * from HoaDon
 
 select * from Ban
 select * from HoaDon
+select * from Khachhang
+delete from KhachHang
