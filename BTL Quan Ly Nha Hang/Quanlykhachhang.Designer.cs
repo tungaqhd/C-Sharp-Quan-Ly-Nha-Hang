@@ -34,12 +34,12 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txtSdt = new System.Windows.Forms.TextBox();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.txtDiem = new System.Windows.Forms.TextBox();
+            this.btnTim = new System.Windows.Forms.Button();
+            this.btnCapNhat = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvKH)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +52,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.dtgvKH.Name = "dtgvKH";
             this.dtgvKH.Size = new System.Drawing.Size(1176, 532);
             this.dtgvKH.TabIndex = 0;
+            this.dtgvKH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvKH_CellContentClick);
             // 
             // label1
             // 
@@ -80,78 +81,82 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.label3.TabIndex = 3;
             this.label3.Text = "Điểm:";
             // 
-            // textBox1
+            // txtSdt
             // 
-            this.textBox1.Location = new System.Drawing.Point(131, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 29);
-            this.textBox1.TabIndex = 4;
+            this.txtSdt.Location = new System.Drawing.Point(131, 69);
+            this.txtSdt.Name = "txtSdt";
+            this.txtSdt.Size = new System.Drawing.Size(179, 29);
+            this.txtSdt.TabIndex = 4;
             // 
-            // textBox2
+            // txtHoTen
             // 
-            this.textBox2.Location = new System.Drawing.Point(131, 111);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(179, 29);
-            this.textBox2.TabIndex = 5;
+            this.txtHoTen.Location = new System.Drawing.Point(131, 111);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(179, 29);
+            this.txtHoTen.TabIndex = 5;
             // 
-            // textBox3
+            // txtDiem
             // 
-            this.textBox3.Location = new System.Drawing.Point(131, 157);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(179, 29);
-            this.textBox3.TabIndex = 6;
+            this.txtDiem.Location = new System.Drawing.Point(131, 157);
+            this.txtDiem.Name = "txtDiem";
+            this.txtDiem.Size = new System.Drawing.Size(179, 29);
+            this.txtDiem.TabIndex = 6;
             // 
-            // button1
+            // btnTim
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(316, 69);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 36);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Tìm";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTim.Image = ((System.Drawing.Image)(resources.GetObject("btnTim.Image")));
+            this.btnTim.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTim.Location = new System.Drawing.Point(316, 69);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(141, 36);
+            this.btnTim.TabIndex = 7;
+            this.btnTim.Text = "Tìm";
+            this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
-            // button2
+            // btnCapNhat
             // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(316, 111);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(141, 40);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Cập nhật";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhat.Image")));
+            this.btnCapNhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCapNhat.Location = new System.Drawing.Point(316, 111);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(141, 40);
+            this.btnCapNhat.TabIndex = 8;
+            this.btnCapNhat.Text = "Cập nhật";
+            this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
-            // button3
+            // btnXoa
             // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(316, 157);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(141, 39);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Xóa";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(316, 157);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(141, 39);
+            this.btnXoa.TabIndex = 9;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
             // 
             // Quanlykhachhang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 762);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnXoa);
+            this.Controls.Add(this.btnCapNhat);
+            this.Controls.Add(this.btnTim);
+            this.Controls.Add(this.txtDiem);
+            this.Controls.Add(this.txtHoTen);
+            this.Controls.Add(this.txtSdt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtgvKH);
             this.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Quanlykhachhang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý khách hàng";
             this.Load += new System.EventHandler(this.Quanlykhachhang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvKH)).EndInit();
@@ -166,11 +171,11 @@ namespace BTL_Quan_Ly_Nha_Hang
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtSdt;
+        private System.Windows.Forms.TextBox txtHoTen;
+        private System.Windows.Forms.TextBox txtDiem;
+        private System.Windows.Forms.Button btnTim;
+        private System.Windows.Forms.Button btnCapNhat;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

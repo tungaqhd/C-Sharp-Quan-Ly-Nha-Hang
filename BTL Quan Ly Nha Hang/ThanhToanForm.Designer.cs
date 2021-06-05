@@ -43,13 +43,13 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.label4 = new System.Windows.Forms.Label();
             this.lblHoTen = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.txtSDT = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtDiemSD = new System.Windows.Forms.TextBox();
             this.txtDiem = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblDiem = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiTiet)).BeginInit();
@@ -204,38 +204,6 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin khách hàng:";
             // 
-            // txtHoTen
-            // 
-            this.txtHoTen.Location = new System.Drawing.Point(166, 83);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(155, 29);
-            this.txtHoTen.TabIndex = 12;
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Location = new System.Drawing.Point(166, 38);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(155, 29);
-            this.txtSDT.TabIndex = 11;
-            this.txtSDT.TextChanged += new System.EventHandler(this.txtSDT_TextChanged);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.lblDiem);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.lblThanhToan);
-            this.groupBox2.Controls.Add(this.lblTongTien);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.lblGiamGia);
-            this.groupBox2.Location = new System.Drawing.Point(13, 603);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(678, 182);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thành tiền:";
-            // 
             // txtDiemSD
             // 
             this.txtDiemSD.Location = new System.Drawing.Point(518, 83);
@@ -271,6 +239,38 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.label7.TabIndex = 14;
             this.label7.Text = "Sử dụng điểm:";
             // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Location = new System.Drawing.Point(166, 83);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(155, 29);
+            this.txtHoTen.TabIndex = 12;
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Location = new System.Drawing.Point(166, 38);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(155, 29);
+            this.txtSDT.TabIndex = 11;
+            this.txtSDT.TextChanged += new System.EventHandler(this.txtSDT_TextChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblDiem);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.lblThanhToan);
+            this.groupBox2.Controls.Add(this.lblTongTien);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.lblGiamGia);
+            this.groupBox2.Location = new System.Drawing.Point(13, 603);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(678, 182);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Thành tiền:";
+            // 
             // lblDiem
             // 
             this.lblDiem.AutoSize = true;
@@ -305,6 +305,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.lbltenBan);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ThanhToanForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

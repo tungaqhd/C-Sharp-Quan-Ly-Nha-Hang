@@ -33,11 +33,16 @@ namespace BTL_Quan_Ly_Nha_Hang
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhanVienPanel));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.trangChủToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sảnPhẩmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quảnLýKhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quảnLýHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmBànToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lvBan = new System.Windows.Forms.ListView();
             this.tableIcon = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnChuyenban = new System.Windows.Forms.Button();
             this.txtGiamGia = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnThanhToan = new System.Windows.Forms.Button();
@@ -75,11 +80,6 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.banTableAdapter1 = new BTL_Quan_Ly_Nha_Hang.QLNhaHangDataSetTableAdapters.BanTableAdapter();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.sảnPhẩmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quảnLýKhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quảnLýHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnChuyenban = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -116,6 +116,39 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.trangChủToolStripMenuItem.Size = new System.Drawing.Size(132, 29);
             this.trangChủToolStripMenuItem.Text = "Trang chủ";
             // 
+            // sảnPhẩmToolStripMenuItem
+            // 
+            this.sảnPhẩmToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quảnLýKhoToolStripMenuItem});
+            this.sảnPhẩmToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("sảnPhẩmToolStripMenuItem.Image")));
+            this.sảnPhẩmToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
+            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(133, 29);
+            this.sảnPhẩmToolStripMenuItem.Text = "Sản phẩm";
+            // 
+            // quảnLýKhoToolStripMenuItem
+            // 
+            this.quảnLýKhoToolStripMenuItem.Name = "quảnLýKhoToolStripMenuItem";
+            this.quảnLýKhoToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
+            this.quảnLýKhoToolStripMenuItem.Text = "Quản lý kho";
+            this.quảnLýKhoToolStripMenuItem.Click += new System.EventHandler(this.quảnLýKhoToolStripMenuItem_Click);
+            // 
+            // hóaĐơnToolStripMenuItem
+            // 
+            this.hóaĐơnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quảnLýHóaĐơnToolStripMenuItem});
+            this.hóaĐơnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("hóaĐơnToolStripMenuItem.Image")));
+            this.hóaĐơnToolStripMenuItem.Name = "hóaĐơnToolStripMenuItem";
+            this.hóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(121, 29);
+            this.hóaĐơnToolStripMenuItem.Text = "Hóa đơn";
+            // 
+            // quảnLýHóaĐơnToolStripMenuItem
+            // 
+            this.quảnLýHóaĐơnToolStripMenuItem.Name = "quảnLýHóaĐơnToolStripMenuItem";
+            this.quảnLýHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
+            this.quảnLýHóaĐơnToolStripMenuItem.Text = "Quản lý hóa đơn";
+            this.quảnLýHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.quảnLýHóaĐơnToolStripMenuItem_Click);
+            // 
             // thêmBànToolStripMenuItem
             // 
             this.thêmBànToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("thêmBànToolStripMenuItem.Image")));
@@ -134,7 +167,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.lvBan.Location = new System.Drawing.Point(8, 30);
             this.lvBan.Margin = new System.Windows.Forms.Padding(4);
             this.lvBan.Name = "lvBan";
-            this.lvBan.Size = new System.Drawing.Size(322, 583);
+            this.lvBan.Size = new System.Drawing.Size(321, 574);
             this.lvBan.TabIndex = 1;
             this.lvBan.UseCompatibleStateImageBehavior = false;
             this.lvBan.Click += new System.EventHandler(this.lvBan_Click);
@@ -153,11 +186,11 @@ namespace BTL_Quan_Ly_Nha_Hang
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.lvBan);
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.groupBox1.Location = new System.Drawing.Point(4, 40);
+            this.groupBox1.Location = new System.Drawing.Point(4, 39);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(338, 620);
+            this.groupBox1.Size = new System.Drawing.Size(337, 611);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách bàn";
@@ -182,14 +215,25 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtTenban);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(350, 40);
+            this.groupBox2.Location = new System.Drawing.Point(349, 39);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(568, 620);
+            this.groupBox2.Size = new System.Drawing.Size(568, 611);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin bàn";
+            // 
+            // btnChuyenban
+            // 
+            this.btnChuyenban.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChuyenban.Location = new System.Drawing.Point(389, 86);
+            this.btnChuyenban.Name = "btnChuyenban";
+            this.btnChuyenban.Size = new System.Drawing.Size(154, 41);
+            this.btnChuyenban.TabIndex = 8;
+            this.btnChuyenban.Text = "Chuyển bàn";
+            this.btnChuyenban.UseVisualStyleBackColor = true;
+            this.btnChuyenban.Click += new System.EventHandler(this.btnChuyenban_Click);
             // 
             // txtGiamGia
             // 
@@ -234,7 +278,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.dtgvChiTietHD.Location = new System.Drawing.Point(8, 300);
             this.dtgvChiTietHD.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvChiTietHD.Name = "dtgvChiTietHD";
-            this.dtgvChiTietHD.Size = new System.Drawing.Size(554, 313);
+            this.dtgvChiTietHD.Size = new System.Drawing.Size(554, 304);
             this.dtgvChiTietHD.TabIndex = 4;
             // 
             // cbxChuyenBan
@@ -339,11 +383,11 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.tabControl1);
-            this.groupBox3.Location = new System.Drawing.Point(929, 40);
+            this.groupBox3.Location = new System.Drawing.Point(929, 39);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(518, 620);
+            this.groupBox3.Size = new System.Drawing.Size(518, 611);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thêm món";
@@ -359,7 +403,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(502, 565);
+            this.tabControl1.Size = new System.Drawing.Size(502, 556);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
@@ -377,7 +421,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(494, 530);
+            this.tabPage1.Size = new System.Drawing.Size(494, 521);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Món lẻ";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -404,7 +448,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.dtgvSanPham.Location = new System.Drawing.Point(8, 221);
             this.dtgvSanPham.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvSanPham.Name = "dtgvSanPham";
-            this.dtgvSanPham.Size = new System.Drawing.Size(479, 301);
+            this.dtgvSanPham.Size = new System.Drawing.Size(479, 292);
             this.dtgvSanPham.TabIndex = 4;
             this.dtgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPham_CellClick);
             // 
@@ -595,62 +639,18 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.51351F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.48649F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 528F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 529F));
             this.tableLayoutPanel1.Controls.Add(this.lblWelcome, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 28);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 38);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.428571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.57143F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1451, 664);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1451, 654);
             this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // sảnPhẩmToolStripMenuItem
-            // 
-            this.sảnPhẩmToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quảnLýKhoToolStripMenuItem});
-            this.sảnPhẩmToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("sảnPhẩmToolStripMenuItem.Image")));
-            this.sảnPhẩmToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
-            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(133, 29);
-            this.sảnPhẩmToolStripMenuItem.Text = "Sản phẩm";
-            // 
-            // quảnLýKhoToolStripMenuItem
-            // 
-            this.quảnLýKhoToolStripMenuItem.Name = "quảnLýKhoToolStripMenuItem";
-            this.quảnLýKhoToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
-            this.quảnLýKhoToolStripMenuItem.Text = "Quản lý kho";
-            this.quảnLýKhoToolStripMenuItem.Click += new System.EventHandler(this.quảnLýKhoToolStripMenuItem_Click);
-            // 
-            // hóaĐơnToolStripMenuItem
-            // 
-            this.hóaĐơnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quảnLýHóaĐơnToolStripMenuItem});
-            this.hóaĐơnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("hóaĐơnToolStripMenuItem.Image")));
-            this.hóaĐơnToolStripMenuItem.Name = "hóaĐơnToolStripMenuItem";
-            this.hóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(121, 29);
-            this.hóaĐơnToolStripMenuItem.Text = "Hóa đơn";
-            // 
-            // quảnLýHóaĐơnToolStripMenuItem
-            // 
-            this.quảnLýHóaĐơnToolStripMenuItem.Name = "quảnLýHóaĐơnToolStripMenuItem";
-            this.quảnLýHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
-            this.quảnLýHóaĐơnToolStripMenuItem.Text = "Quản lý hóa đơn";
-            this.quảnLýHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.quảnLýHóaĐơnToolStripMenuItem_Click);
-            // 
-            // btnChuyenban
-            // 
-            this.btnChuyenban.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChuyenban.Location = new System.Drawing.Point(389, 86);
-            this.btnChuyenban.Name = "btnChuyenban";
-            this.btnChuyenban.Size = new System.Drawing.Size(154, 41);
-            this.btnChuyenban.TabIndex = 8;
-            this.btnChuyenban.Text = "Chuyển bàn";
-            this.btnChuyenban.UseVisualStyleBackColor = true;
-            this.btnChuyenban.Click += new System.EventHandler(this.btnChuyenban_Click);
             // 
             // NhanVienPanel
             // 
@@ -660,6 +660,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NhanVienPanel";

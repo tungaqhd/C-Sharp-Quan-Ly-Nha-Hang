@@ -198,5 +198,11 @@ namespace BTL_Quan_Ly_Nha_Hang
             Quanlykhachhang quanlykhachhang = new Quanlykhachhang();
             quanlykhachhang.ShowDialog();
         }
+
+        private void bànToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuanLyBan quanLyBan = new QuanLyBan();
+            quanLyBan.ShowDialog();
+        }
     }
 }

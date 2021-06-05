@@ -30,7 +30,7 @@ namespace BTL_Quan_Ly_Nha_Hang
                     h.Ban.ten_ban,
                     h.ngay,
                     h.trang_thai_hd
-                }).ToList();
+                }).OrderByDescending(hd => hd.ngay).ToList();
 
                 dtgvHoaDon.Columns[0].HeaderText = "Mã hóa đơn";
                 dtgvHoaDon.Columns[1].HeaderText = "Tên nhân viên";

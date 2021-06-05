@@ -138,6 +138,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.tbxTen);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ThemMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

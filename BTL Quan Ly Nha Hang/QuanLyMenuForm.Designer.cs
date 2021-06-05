@@ -131,6 +131,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.btnChinhSua);
             this.Controls.Add(this.dtgvMenu);
             this.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QuanLyMenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý Menu";

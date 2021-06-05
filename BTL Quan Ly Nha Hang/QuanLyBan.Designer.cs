@@ -60,6 +60,8 @@ namespace BTL_Quan_Ly_Nha_Hang
             // 
             // dtgvBan
             // 
+            this.dtgvBan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvBan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgvBan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvBan.Location = new System.Drawing.Point(22, 295);
             this.dtgvBan.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -131,6 +133,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.Controls.Add(this.txtTenBan);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Open Sans", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "QuanLyBan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
