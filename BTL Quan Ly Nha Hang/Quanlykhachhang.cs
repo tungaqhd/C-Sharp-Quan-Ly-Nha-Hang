@@ -66,6 +66,7 @@ namespace BTL_Quan_Ly_Nha_Hang
                     db.SaveChanges();
                 }
                 HienThi();
+                ResetForm();
             }
             catch (FormatException)
             {
@@ -80,6 +81,31 @@ namespace BTL_Quan_Ly_Nha_Hang
             txtHoTen.Text = dtgvKH.Rows[idx].Cells[1].Value.ToString();
             txtSdt.Text = dtgvKH.Rows[idx].Cells[2].Value.ToString();
             txtDiem.Text = dtgvKH.Rows[idx].Cells[3].Value.ToString();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (idx == -1)
+            {
+                MessageBox.Show("Vui lòng chọn một khách hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            using (NhaHangEntities db = new NhaHangEntities())
+            {
+                int maKh = Convert.ToInt32(dtgvKH.Rows[idx].Cells[0].Value.ToString());
+                KhachHang khach = db.KhachHangs.Find(maKh);
+                db.KhachHangs.Remove(khach);
+                db.SaveChanges();
+            }
+            HienThi();
+            ResetForm();
+        }
+
+        private void ResetForm()
+        {
+            txtDiem.Text = "";
+            txtHoTen.Text = "";
+            txtSdt.Text = "";
         }
     }
 }

@@ -47,10 +47,11 @@ namespace BTL_Quan_Ly_Nha_Hang
         {
             using (NhaHangEntities db = new NhaHangEntities())
             {
-                db.Bans.Add(new Ban() { ten_ban = txtTenBan.Text, trang_thai = 0 });
+                db.Bans.Add(new Ban() { ten_ban = txtTenBan.Text, trang_thai = 1 });
                 db.SaveChanges();
             }
             HienThi();
+            txtTenBan.Text = "";
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -63,6 +64,7 @@ namespace BTL_Quan_Ly_Nha_Hang
                 db.SaveChanges();
             }
             HienThi();
+            txtTenBan.Text = "";
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

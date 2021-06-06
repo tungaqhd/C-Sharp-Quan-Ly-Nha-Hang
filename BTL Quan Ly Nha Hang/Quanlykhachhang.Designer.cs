@@ -136,6 +136,7 @@ namespace BTL_Quan_Ly_Nha_Hang
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // Quanlykhachhang
             // 
