@@ -141,7 +141,6 @@ namespace BTL_Quan_Ly_Nha_Hang
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

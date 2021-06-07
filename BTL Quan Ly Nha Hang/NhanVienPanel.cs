@@ -41,8 +41,8 @@ namespace BTL_Quan_Ly_Nha_Hang
                 ((DataGridViewImageColumn)dtgvSanPham.Columns[6]).ImageLayout = DataGridViewImageCellLayout.Stretch;
                 dtgvSanPham.Columns[0].HeaderText = "Mã";
                 dtgvSanPham.Columns[1].HeaderText = "Tên";
-                dtgvSanPham.Columns[2].HeaderText = "Số lượng còn";
-                dtgvSanPham.Columns[3].HeaderText = "Loại";
+                dtgvSanPham.Columns[2].HeaderText = "Mô tả";
+                dtgvSanPham.Columns[3].HeaderText = "Số lượng còn";
                 dtgvSanPham.Columns[4].HeaderText = "Đơn giá";
                 dtgvSanPham.Columns[5].HeaderText = "Loại";
                 dtgvSanPham.Columns[6].HeaderText = "Ảnh";

@@ -88,7 +88,12 @@ namespace BTL_Quan_Ly_Nha_Hang
 
                 using (NhaHangEntities db = new NhaHangEntities())
                 {
-                    db.SanPhams.Add(new SanPham() { ten_sp = ten, mo_ta = moTa, so_luong = soLuong, don_gia = donGia, loai = loai });
+                    SanPham sp = new SanPham() { ten_sp = ten, mo_ta = moTa, so_luong = soLuong, don_gia = donGia, loai = loai };
+                    if (ptbPreview.Image != null)
+                    {
+                        sp.anh = ConvertImageToBinary(ptbPreview.Image);
+                    }
+                    db.SanPhams.Add(sp);
                     db.SaveChanges();
                 }
 
